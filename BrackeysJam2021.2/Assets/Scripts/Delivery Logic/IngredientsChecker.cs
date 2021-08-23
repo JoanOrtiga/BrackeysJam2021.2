@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class IngredientsChecker : MonoBehaviour
 {
-    public delegate void OnIngredientThrownDelegate(string type);
-    public static OnIngredientThrownDelegate ingredientThrownDelegate;
-    private void OnCollisionEnter(Collision collision)
+    public delegate void OnIngredientUsedDelegate(string name);
+    public static OnIngredientUsedDelegate ingredientUsedDelegate;
+    private void OnTriggerEnter(Collider other)
     {
-        if ((collision.collider.GetComponent("Ingredient") as Ingredient) != null)
+        if ((other.GetComponent("Ingredient") as Ingredient) != null)
         {
-            var ingredient = collision.collider.GetComponent("Ingredient") as Ingredient;
-            ingredientThrownDelegate?.Invoke(ingredient.Name);
+            var ingredient = other.GetComponent("Ingredient") as Ingredient;
+            ingredientUsedDelegate?.Invoke(ingredient.Name);
+            Destroy(other.gameObject);
         }
     }
 }

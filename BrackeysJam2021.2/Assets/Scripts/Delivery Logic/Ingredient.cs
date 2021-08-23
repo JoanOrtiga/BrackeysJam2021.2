@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Ingredient : MonoBehaviour
 {
-    public string Name { get; }
+    public string Name;
 }

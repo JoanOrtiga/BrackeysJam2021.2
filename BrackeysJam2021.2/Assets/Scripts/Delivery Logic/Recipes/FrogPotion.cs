@@ -6,7 +6,7 @@ public class FrogPotion : IRecipe
 {
     public Dictionary<string, int> Ingredients => new Dictionary<string, int> {
             {"Frog", 4},
-            {"Other", 1},
+            {"Essence", 1},
             };
     public string Name => "FrogPotion";
     public string Description => "To be ugly";
