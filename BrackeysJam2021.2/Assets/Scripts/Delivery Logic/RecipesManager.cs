@@ -21,6 +21,26 @@ public class RecipesManager : MonoBehaviour
     public delegate void OnTimeLeftDelegate(float timeLeftPercentage);
     public static OnTimeLeftDelegate timeLeftDelegate;
 
+    public delegate void OnIncorrectIngredientsDelegate();
+    public static OnIncorrectIngredientsDelegate incorrectIngredientsDelegate;
+    public delegate void OnIncorrectQuantitiesDelegate();
+    public static OnIncorrectQuantitiesDelegate incorrectQuantitiesDelegate;
+    public delegate void OnSlowTime1Delegate();
+    public static OnSlowTime1Delegate slowTime1Delegate;
+    public delegate void OnSlowTime2Delegate();
+    public static OnSlowTime2Delegate slowTime2Delegate;
+    public delegate void OnSlowTime3Delegate();
+    public static OnSlowTime3Delegate slowTime3Delegate;
+    public delegate void OnPerfectDelegate();
+    public static OnPerfectDelegate perfectDelegate;
+    public delegate void OnShowExplanationDelegate();
+    public static OnShowExplanationDelegate showExplanationDelegate;
+    public delegate void OnShowStarsDelegate(float puntuation);
+    public static OnShowStarsDelegate showStarsDelegate;
+
+    public delegate void OnShowMedianDelegate(float puntuation);
+    public static OnShowMedianDelegate showMedianDelegate;
+
     private List<IRecipe> recipesList;
 
     private IRecipe currentRecipe;
@@ -66,27 +86,43 @@ public class RecipesManager : MonoBehaviour
             {
                 if (IncorrectIngredients())
                 {
+                    incorrectIngredientsDelegate?.Invoke();
                     newPuntuation -= 4;
                 }
                 else
                 {
-                    newPuntuation -= 1;
+                    incorrectQuantitiesDelegate?.Invoke();
+                    newPuntuation -= 1.5f;
                 }
             }
             if (timeLeft < 0)
             {
-                if (timeLeft <= -6)
-                    newPuntuation -= 3;
-                else if (timeLeft <= -4)
-                    newPuntuation -= 2;
-                else if (timeLeft <= -2)
-                    newPuntuation -= 1;
+                if (timeLeft <= -5)
+                {
+                    slowTime3Delegate?.Invoke();
+                    newPuntuation -= 2.5f;
+                }
+                else if (timeLeft <= -3)
+                {
+                    slowTime2Delegate?.Invoke();
+                    newPuntuation -= 1.5f;
+                }
+                else if (timeLeft <= -1)
+                {
+                    slowTime1Delegate?.Invoke();
+                    newPuntuation -= 0.5f;
+                }
             }
+            if (newPuntuation == 5)
+                perfectDelegate?.Invoke();
+
+            showExplanationDelegate?.Invoke();
+            showStarsDelegate?.Invoke(newPuntuation);
             puntuationsList.Add(newPuntuation);
-            Debug.Log("Putuation: " + newPuntuation);
-            Debug.Log("Median: " + Median(puntuationsList));
+
+            showMedianDelegate?.Invoke(Median(puntuationsList));
+
             usedIngredients.Clear();
-            StartRecipe();
         }
 
         timeLeft -= Time.deltaTime;
@@ -104,6 +140,8 @@ public class RecipesManager : MonoBehaviour
 
     private bool IncorrectIngredients()
     {
+        if (usedIngredients.Count != currentIngredients.Count)
+            return true;
         foreach (KeyValuePair<string, int> entry in usedIngredients)
         {
             int value = 0;
@@ -122,7 +160,7 @@ public class RecipesManager : MonoBehaviour
         return recipe;
     }
 
-    private void StartRecipe()
+    public void StartRecipe()
     {
         currentRecipe = GetRandomRecipe();
         timeLeft = currentDefaultTime;
