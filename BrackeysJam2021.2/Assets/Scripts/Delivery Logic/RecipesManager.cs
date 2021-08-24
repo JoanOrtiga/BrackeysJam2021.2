@@ -69,17 +69,12 @@ public class RecipesManager : MonoBehaviour
             recipesList.Add((IRecipe)tempRecipe);
         }
 
-        foreach(var recipe in recipesList)
-        {
-            Debug.Log(recipe.Name);
-        }
-
         StartRecipe();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             float newPuntuation = 5;
             if (!DictionaryExtensionMethods.ContentEquals(currentIngredients, usedIngredients))
@@ -135,18 +130,22 @@ public class RecipesManager : MonoBehaviour
         foreach(int num in puntuationsList)
             sum += num;
 
-        return sum / (float)puntuationsList.Count;
+        return sum / puntuationsList.Count;
     }
 
     private bool IncorrectIngredients()
     {
         if (usedIngredients.Count != currentIngredients.Count)
+        {
             return true;
+        }
         foreach (KeyValuePair<string, int> entry in usedIngredients)
         {
             int value = 0;
             if (!currentIngredients.TryGetValue(entry.Key, out value))
+            {
                 return true;
+            }
         }
         return false;
     }
@@ -179,10 +178,10 @@ public class RecipesManager : MonoBehaviour
         {
             usedIngredients.Add(name, 1);
         }
-        printIngredients();
+        printIngredients(usedIngredients);
     }
 
-    private void printIngredients()
+    private void printIngredients(Dictionary<string, int> usedIngredients)
     {
         string ingredients = "";
         foreach (KeyValuePair<string, int> entry in usedIngredients)

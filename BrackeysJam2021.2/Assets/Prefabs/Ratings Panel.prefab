@@ -876,6 +876,7 @@ GameObject:
   - component: {fileID: 3240002249871406338}
   - component: {fileID: 3240002249871406397}
   - component: {fileID: 3240002249871406337}
+  - component: {fileID: 2598676180444259435}
   m_Layer: 5
   m_Name: Ratings Panel
   m_TagString: Untagged
@@ -984,6 +985,18 @@ MonoBehaviour:
   slowTime1: A bit slow.
   slowTime2: Too slow.
   slowTime3: You're a turtle.
+--- !u!225 &2598676180444259435
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3240002249871406396}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3240002249956443856
 GameObject:
   m_ObjectHideFlags: 0

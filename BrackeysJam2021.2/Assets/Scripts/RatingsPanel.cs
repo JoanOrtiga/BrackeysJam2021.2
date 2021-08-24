@@ -75,6 +75,8 @@ public class RatingsPanel : MonoBehaviour
             star.enabled = false;
         }
         GetComponent<Canvas>().enabled = false;
+        GetComponent<CanvasGroup>().interactable = false;
+        Time.timeScale = 1f;
     }
 
     private void ShowExplanation()
@@ -82,6 +84,8 @@ public class RatingsPanel : MonoBehaviour
         explanationText.text = explanation;
         explanation = "";
         GetComponent<Canvas>().enabled = true;
+        GetComponent<CanvasGroup>().interactable = true;
+        Time.timeScale = 0f;
     }
 
     private void addExplanation1()
