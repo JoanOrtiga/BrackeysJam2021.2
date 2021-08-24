@@ -18,10 +18,6 @@ public class PersonController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         
     }
-    //private void FixedUpdate()
-    //{
-        
-    //}
 
     private void FixedUpdate()
     {
@@ -35,5 +31,5 @@ public class PersonController : MonoBehaviour
         move = (transform.right * x + transform.forward * z).normalized;
         rigidbody.velocity = move * speed * Time.deltaTime;
     }
-    
+
 }
