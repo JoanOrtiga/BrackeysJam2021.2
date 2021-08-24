@@ -52,10 +52,10 @@ public class TakeObject : MonoBehaviour
         if (!isHolding)
         {
             temporal = selected;
-            if (temporal.GetComponent<Spawner>())
+            if (temporal.GetComponent<SpawnerItem>())
             {
                 print("spawner");
-                GameObject spawned = selected.GetComponent<Spawner>().Spawn();
+                GameObject spawned = selected.GetComponent<SpawnerItem>().Spawn();
                 temporal = spawned;
 
                 temporal.name = "obj" + index;

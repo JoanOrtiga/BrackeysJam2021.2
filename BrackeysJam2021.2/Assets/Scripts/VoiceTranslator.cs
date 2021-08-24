@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VoiceTranslator : MonoBehaviour
 {
-    private List<int> SoundIndex = new List<int>();
+
     private char[] letters;
     private float time = 0.1f;
 
@@ -24,9 +24,10 @@ public class VoiceTranslator : MonoBehaviour
         }
         return -1;
     }
-    private void Translator(string sentence)
+    private void Translator(string sentence) //aqui va la frase
     {
         letters = sentence.ToCharArray();
+        List<int> SoundIndex = new List<int>();
 
         for (int i = 0; i < letters.Length; i++)
         {
