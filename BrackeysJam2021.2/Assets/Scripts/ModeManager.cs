@@ -47,7 +47,6 @@ public class ModeManager : MonoBehaviour
         switch (currentMode)
         {
             case modes.NormalMode:
-                
                 break;
             case modes.InspectorMode:
                 Inspector();

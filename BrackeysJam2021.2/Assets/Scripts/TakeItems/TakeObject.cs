@@ -6,10 +6,8 @@ public class TakeObject : MonoBehaviour
 {
     public GameObject InspectorObject;
     private GameObject temporal;
-
-    private float speed = 10f;
-    private float rotationX;
-    private float rotationY;
+    public GameObject spaceForObjects;
+    private int index;
 
     //throw
     private bool isHolding = false;
@@ -49,22 +47,62 @@ public class TakeObject : MonoBehaviour
     {
         InspectorObject.gameObject.SetActive(false);
     }
-
+   
     private void ShowObject(GameObject selected)
     {
         if (!isHolding)
         {
             temporal = selected;
-            InspectorObject.gameObject.SetActive(true);
-            InspectorObject.GetComponent<MeshFilter>().mesh = temporal.GetComponent<MeshFilter>().mesh;
-            temporal.gameObject.SetActive(false);
+            if (temporal.GetComponent<Spawner>())
+            {
+                print("spawner");
+                GameObject spawned = selected.GetComponent<Spawner>().Spawn();
+                temporal = spawned;
 
-            //
-            print("rgb");
-            rgb = temporal.GetComponent<Rigidbody>();
-            rgb.position = InspectorObject.transform.position;
-            isHolding = true;
+                temporal.name = "obj" + index;
+                index++;
+
+                ExamineObject.interestingObjects.Add(temporal);
+
+                print("no spawner");
+                InspectorObject.gameObject.SetActive(true);
+                InspectorObject.GetComponent<MeshFilter>().mesh = temporal.GetComponent<MeshFilter>().mesh;
+                temporal.gameObject.SetActive(false);
+
+
+                rgb = temporal.GetComponent<Rigidbody>();
+                temporal.transform.position = InspectorObject.transform.position;
+                isHolding = true;
+
+            }
+            else
+            {
+                print("no spawner");
+                InspectorObject.gameObject.SetActive(true);
+                InspectorObject.GetComponent<MeshFilter>().mesh = temporal.GetComponent<MeshFilter>().mesh;
+                temporal.gameObject.SetActive(false);
+
+
+                rgb = temporal.GetComponent<Rigidbody>();
+                temporal.transform.position = InspectorObject.transform.position;
+                isHolding = true;
+            }
+            
         }
+        //if (!isHolding  && !selected is Spawner)
+        //{
+            
+        //    InspectorObject.gameObject.SetActive(true);
+        //    InspectorObject.GetComponent<MeshFilter>().mesh = temporal.GetComponent<MeshFilter>().mesh;
+        //    temporal.gameObject.SetActive(false);
+
+            
+        //    rgb = temporal.GetComponent<Rigidbody>();
+        //    temporal.transform.position = InspectorObject.transform.position;
+        //    isHolding = true;
+        //}
+
+        
 
     }
 

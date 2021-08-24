@@ -6,7 +6,7 @@ using System.Linq;
 public class ExamineObject : MonoBehaviour
 {
     public Camera camera;
-    public List<GameObject> interestingObjects;
+    public static List<GameObject> interestingObjects;
     public Transform player;
     private GameObject objectSelected;
 
@@ -16,7 +16,7 @@ public class ExamineObject : MonoBehaviour
     public static ModeInspector DelegateTakeObject;
     private void Start()
     {
-        interestingObjects = GameObject.FindGameObjectsWithTag("Interesting").ToList();//TEMPORAL
+        interestingObjects = GameObject.FindGameObjectsWithTag("Interesting").ToList();//TEMPORAL;
     }
 
     private void Update()
