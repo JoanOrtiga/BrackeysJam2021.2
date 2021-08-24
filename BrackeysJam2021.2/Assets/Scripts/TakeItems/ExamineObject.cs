@@ -10,7 +10,7 @@ public class ExamineObject : MonoBehaviour
     public Transform player;
     private GameObject objectSelected;
 
-    private float maxDistance = 5f;
+    private float maxDistance = 2.5f;
 
     public delegate void ModeInspector(GameObject itemSelected);
     public static ModeInspector DelegateTakeObject;

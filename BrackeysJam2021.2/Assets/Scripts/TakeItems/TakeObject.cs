@@ -6,7 +6,6 @@ public class TakeObject : MonoBehaviour
 {
     public GameObject InspectorObject;
     private GameObject temporal;
-    public GameObject spaceForObjects;
     private int index;
 
     //throw
@@ -64,46 +63,28 @@ public class TakeObject : MonoBehaviour
 
                 ExamineObject.interestingObjects.Add(temporal);
 
-                print("no spawner");
-                InspectorObject.gameObject.SetActive(true);
-                InspectorObject.GetComponent<MeshFilter>().mesh = temporal.GetComponent<MeshFilter>().mesh;
-                temporal.gameObject.SetActive(false);
-
-
-                rgb = temporal.GetComponent<Rigidbody>();
-                temporal.transform.position = InspectorObject.transform.position;
-                isHolding = true;
+                UpdateTheInspector();
 
             }
             else
             {
                 print("no spawner");
-                InspectorObject.gameObject.SetActive(true);
-                InspectorObject.GetComponent<MeshFilter>().mesh = temporal.GetComponent<MeshFilter>().mesh;
-                temporal.gameObject.SetActive(false);
+                UpdateTheInspector();
 
-
-                rgb = temporal.GetComponent<Rigidbody>();
-                temporal.transform.position = InspectorObject.transform.position;
-                isHolding = true;
             }
-            
+            //Sin el ELSE agarra sin pulsar.
         }
-        //if (!isHolding  && !selected is Spawner)
-        //{
-            
-        //    InspectorObject.gameObject.SetActive(true);
-        //    InspectorObject.GetComponent<MeshFilter>().mesh = temporal.GetComponent<MeshFilter>().mesh;
-        //    temporal.gameObject.SetActive(false);
+    }
 
-            
-        //    rgb = temporal.GetComponent<Rigidbody>();
-        //    temporal.transform.position = InspectorObject.transform.position;
-        //    isHolding = true;
-        //}
+    private void UpdateTheInspector() 
+    {
+        InspectorObject.gameObject.SetActive(true);
+        InspectorObject.GetComponent<MeshFilter>().mesh = temporal.GetComponent<MeshFilter>().mesh;
+        temporal.gameObject.SetActive(false);
 
-        
-
+        rgb = temporal.GetComponent<Rigidbody>();
+        temporal.transform.position = InspectorObject.transform.position;
+        isHolding = true;
     }
 
     private void ThrowObject()

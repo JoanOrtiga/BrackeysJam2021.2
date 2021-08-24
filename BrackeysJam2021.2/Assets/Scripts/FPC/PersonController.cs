@@ -6,6 +6,7 @@ public class PersonController : MonoBehaviour
 {
     private float x;
     private float z;
+    
     [SerializeField]
     private float speed = 10f;
 
@@ -15,6 +16,7 @@ public class PersonController : MonoBehaviour
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        
     }
     //private void FixedUpdate()
     //{
