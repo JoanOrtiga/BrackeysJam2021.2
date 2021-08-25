@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2389487364071991080}
   - component: {fileID: 6688810529140534349}
   - component: {fileID: 3441285944837470050}
+  - component: {fileID: -6960901615899249642}
   m_Layer: 7
   m_Name: Frog
   m_TagString: Interesting
@@ -127,3 +128,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &-6960901615899249642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6445515001146974835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee8266b341bdba4daca2868552e2c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Converter: {fileID: 0}
+  timeHeated: 0
