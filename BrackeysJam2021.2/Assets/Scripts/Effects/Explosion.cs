@@ -6,32 +6,40 @@ public class Explosion : MonoBehaviour
 {
     [SerializeField]
     private float rad = 0.5f;
-    List<GameObject> objectsNear;
-    private float modifier = 2f;
     private float power = 10f;
 
     public Collider[] coll;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(transform.position, rad);
-    }
-    private void Start()
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawSphere(transform.position, rad);
+    //}
+    private void Explosive()
     {
         print("a");
 
         coll = Physics.OverlapSphere(transform.position, rad);
 
-        foreach (Collider c in coll)
+        for (int i = 0; i < coll.Length; i++)
         {
             print("a222");
 
-            Rigidbody rb = c.GetComponent<Rigidbody>();
+            Rigidbody rb = coll[i].GetComponent<Rigidbody>();
 
-            if(rb!=null)
+            if (rb != null)
+            {
                 rb.AddExplosionForce(power, transform.position, rad);
+                print("a");
+            }
         }
     }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Impact")
+        {
+            Explosive();
+           // Destroy(this.gameObject.);
+        }
+    }
 }
