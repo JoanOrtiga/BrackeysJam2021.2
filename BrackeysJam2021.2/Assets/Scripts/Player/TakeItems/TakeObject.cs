@@ -54,7 +54,6 @@ public class TakeObject : MonoBehaviour
             temporal = selected;
             if (temporal.GetComponent<SpawnerItem>())
             {
-                print("spawner");
                 GameObject spawned = selected.GetComponent<SpawnerItem>().Spawn();
                 temporal = spawned;
 
@@ -68,9 +67,7 @@ public class TakeObject : MonoBehaviour
             }
             else
             {
-                print("no spawner");
                 UpdateTheInspector();
-
             }
             //Sin el ELSE agarra sin pulsar.
         }

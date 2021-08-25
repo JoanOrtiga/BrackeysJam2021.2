@@ -10,5 +10,5 @@ public class EyeFrogPotion : IRecipe
             };
     public string Name => "EyeFrogPotion";
     public string Description => "To do something";
-    public float DefaultTime => 6f;
+    public float DefaultTime => 40f;
 }

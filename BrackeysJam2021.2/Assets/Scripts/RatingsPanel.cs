@@ -13,8 +13,6 @@ public class RatingsPanel : MonoBehaviour
 
     [Header("Ratings explanation")]
     [SerializeField]
-    private string perfect;
-    [SerializeField]
     private string incorrectIngredients;
     [SerializeField]
     private string incorrectQuantities;
@@ -24,30 +22,21 @@ public class RatingsPanel : MonoBehaviour
     private string slowTime2;
     [SerializeField]
     private string slowTime3;
+    [SerializeField]
+    private string perfect;
+    private List<string> messages => new List<string> { incorrectIngredients, incorrectQuantities, slowTime1, slowTime2, slowTime3, perfect };
 
     private string explanation;
 
     private void OnEnable()
     {
-        RecipesManager.incorrectIngredientsDelegate += addExplanation1;
-        RecipesManager.incorrectQuantitiesDelegate += addExplanation2;
-        RecipesManager.slowTime1Delegate += addExplanation3;
-        RecipesManager.slowTime2Delegate += addExplanation4;
-        RecipesManager.slowTime3Delegate += addExplanation5;
-        RecipesManager.perfectDelegate += addExplanation6;
-        RecipesManager.showExplanationDelegate += ShowExplanation;
-        RecipesManager.showStarsDelegate += ShowStars;
+        OrdersManager.showExplanationDelegate += ShowExplanation;
+        OrdersManager.showStarsDelegate += ShowStars;
     }
     private void OnDisable()
     {
-        RecipesManager.incorrectIngredientsDelegate -= addExplanation1;
-        RecipesManager.incorrectQuantitiesDelegate -= addExplanation2;
-        RecipesManager.slowTime1Delegate -= addExplanation3;
-        RecipesManager.slowTime2Delegate -= addExplanation4;
-        RecipesManager.slowTime3Delegate -= addExplanation5;
-        RecipesManager.perfectDelegate -= addExplanation6;
-        RecipesManager.showExplanationDelegate -= ShowExplanation;
-        RecipesManager.showStarsDelegate -= ShowStars;
+        OrdersManager.showExplanationDelegate -= ShowExplanation;
+        OrdersManager.showStarsDelegate -= ShowStars;
     }
 
     private void Start()
@@ -75,37 +64,26 @@ public class RatingsPanel : MonoBehaviour
             star.enabled = false;
         }
         GetComponent<Canvas>().enabled = false;
+        GetComponent<CanvasGroup>().interactable = false;
+        Time.timeScale = 1f;
     }
 
-    private void ShowExplanation()
+    private void ShowExplanation(List<bool> mistakes)
     {
+        explanationGeneration(mistakes);
         explanationText.text = explanation;
         explanation = "";
         GetComponent<Canvas>().enabled = true;
+        GetComponent<CanvasGroup>().interactable = true;
+        Time.timeScale = 0f;
     }
 
-    private void addExplanation1()
+    private void explanationGeneration(List<bool> mistakes)
     {
-        explanation += incorrectIngredients + " ";
-    }
-    private void addExplanation2()
-    {
-        explanation += incorrectQuantities + " ";
-    }
-    private void addExplanation3()
-    {
-        explanation += slowTime1 + " ";
-    }
-    private void addExplanation4()
-    {
-        explanation += slowTime2 + " ";
-    }
-    private void addExplanation5()
-    {
-        explanation += slowTime3 + " ";
-    }
-    private void addExplanation6()
-    {
-        explanation += perfect + " ";
+        for(int i=0; i < mistakes.Count; i++)
+        {
+            if (mistakes[i])
+                explanation += messages[i];
+        }
     }
 }

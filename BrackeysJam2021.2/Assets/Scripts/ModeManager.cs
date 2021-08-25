@@ -28,8 +28,6 @@ public class ModeManager : MonoBehaviour
 
     private void Update()
     {
-        print(currentMode);
-
         if (Input.GetKeyDown(KeyCode.Escape) && currentMode != modes.NormalMode)
             StartCoroutine(Cancel());
     }
