@@ -29,22 +29,11 @@ public class ExamineObject : MonoBehaviour
         }
     }
 
-    private bool IsNearToCatch(string name)
+    private bool IsNearToCatch(Vector3 position)
     {
-        print(name);
-        for (int i = 0; i < interestingObjects.Count; i++)
-        {
-            if (name == interestingObjects[i].name)
-            {
-                float distance = Vector3.Distance(player.transform.position, interestingObjects[i].transform.position); 
-                if (distance < maxDistance)
-                {
-                    objectSelected = interestingObjects[i];
-                    return true;
-                }
-            }
-        }
-        return false;
+        float distance = Vector3.Distance(player.transform.position, position);
+
+        return distance < maxDistance;
     }
 
     private bool isAInterestingObject()
@@ -52,9 +41,12 @@ public class ExamineObject : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
         {
-        
-            if (hit.collider.tag == "Interesting" && IsNearToCatch(hit.collider.name))
+
+            if (hit.collider.tag == "Interesting" && IsNearToCatch(hit.transform.position))
+            {
+                objectSelected = hit.transform.gameObject;
                 return true;
+            }
         }
         return false;
 
