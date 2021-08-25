@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mareo : MonoBehaviour
 {
     public GameObject Distorsion;
-    private bool change = false;
+    private bool IsDistorsion = false;
 
     private void Start()
     {
@@ -13,14 +13,14 @@ public class Mareo : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K)) //pruebas
-        {
-            change = !change;
-            if (change)
-                ChangeToDistorsion();
-            else
-                ChangeToNormal();
-        }
+        //if (Input.GetKeyDown(KeyCode.K)) //pruebas
+        //{
+        //    IsDistorsion = !IsDistorsion;
+        //    if (IsDistorsion)
+        //        ChangeToDistorsion();
+        //    else
+        //        ChangeToNormal();
+        //}
     }
 
     private void ChangeToDistorsion()

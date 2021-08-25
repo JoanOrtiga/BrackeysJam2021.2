@@ -9,6 +9,7 @@ TagManager:
   - Impact
   - Interactable
   - Liquid
+  - FireParticle
   layers:
   - Default
   - TransparentFX
