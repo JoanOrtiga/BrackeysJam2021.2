@@ -11,8 +11,7 @@ public class IngredientsChecker : MonoBehaviour
         if ((other.GetComponent("Ingredient") as Ingredient) != null)
         {
             var ingredient = other.GetComponent("Ingredient") as Ingredient;
-            ingredientUsedDelegate?.Invoke(ingredient.Name);
-            ExamineObject.interestingObjects.Remove(other.gameObject);    
+            ingredientUsedDelegate?.Invoke(ingredient.IngredientName);
             Destroy(other.gameObject);
         }
     }
