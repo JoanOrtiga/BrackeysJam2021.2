@@ -6,27 +6,34 @@ using UnityEngine.UI;
 
 public class RecipePanel : MonoBehaviour
 {
-    public TextMeshPro Name;
-    public TextMeshPro Description;
-    public TextMeshPro Ingredients;
-    public Image Time;
+    [SerializeReference]
+    private TextMeshPro customer;
+    [SerializeReference]
+    private TextMeshPro name;
+    [SerializeReference]
+    private TextMeshPro description;
+    [SerializeReference]
+    private TextMeshPro ingredients;
+    [SerializeReference]
+    private Image time;
 
     private void OnEnable()
     {
-        RecipesManager.recipeStartDelegate += RecipeStart;
-        RecipesManager.timeLeftDelegate += TimeLeft;
+        OrdersManager.orderStartDelegate += OrderStart;
+        OrdersManager.timeLeftDelegate += TimeLeft;
     }
     private void OnDisable()
     {
-        RecipesManager.recipeStartDelegate -= RecipeStart;
-        RecipesManager.timeLeftDelegate -= TimeLeft;
+        OrdersManager.orderStartDelegate -= OrderStart;
+        OrdersManager.timeLeftDelegate -= TimeLeft;
     }
 
-    private void RecipeStart(IRecipe recipe)
+    private void OrderStart(IRecipe recipe, ICustomer customerName)
     {
-        Name.text = recipe.Name;
-        Description.text = recipe.Description;
-        Ingredients.text = IngredientString(recipe.Ingredients);
+        customer.text = customerName.Name;
+        name.text = recipe.Name;
+        description.text = recipe.Description;
+        ingredients.text = IngredientString(recipe.Ingredients);
     }
 
     private string IngredientString(Dictionary<string, int> dictionary)
@@ -41,6 +48,6 @@ public class RecipePanel : MonoBehaviour
 
     private void TimeLeft(float timeLeftPercentage)
     {
-        Time.fillAmount = timeLeftPercentage;
+        time.fillAmount = timeLeftPercentage;
     }
 }

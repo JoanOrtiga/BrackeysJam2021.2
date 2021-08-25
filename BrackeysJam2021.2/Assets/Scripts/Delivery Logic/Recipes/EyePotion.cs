@@ -10,5 +10,5 @@ public class EyePotion : IRecipe
             };
     public string Name => "EyePotion";
     public string Description => "To have better sight";
-    public float DefaultTime => 3f;
+    public float DefaultTime => 40f;
 }
