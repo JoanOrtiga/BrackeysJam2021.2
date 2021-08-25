@@ -31,6 +31,7 @@ public class ExamineObject : MonoBehaviour
 
     private bool IsNearToCatch(string name)
     {
+        print(name);
         for (int i = 0; i < interestingObjects.Count; i++)
         {
             if (name == interestingObjects[i].name)
