@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TakeObject : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class TakeObject : MonoBehaviour
     public Transform PlayerLook;
 
     private Rigidbody rgb;
+
+    //show name
+    public TMP_Text nameIngredient;
 
     private void OnEnable()
     {
@@ -36,7 +40,7 @@ public class TakeObject : MonoBehaviour
             else if (Input.GetMouseButtonUp(1))
             {
                 isHolding = false;
-
+                nameIngredient.text = "";
                 ModeManager.Instance.currentMode = ModeManager.modes.NormalMode;
                 StartCoroutine(ModeManager.Instance.Switch());
             }
@@ -47,6 +51,7 @@ public class TakeObject : MonoBehaviour
     {
         InspectorObject.gameObject.SetActive(false);
         player = GetComponent<Transform>();
+        nameIngredient.text = "";
     }
    
     private void ShowObject(GameObject selected)
@@ -83,6 +88,9 @@ public class TakeObject : MonoBehaviour
 
         rgb = temporal.GetComponent<Rigidbody>();
         temporal.transform.position = InspectorObject.transform.position;
+
+        //if(temporal.GetComponent<Ingredient>()) //PARA Q NO de error por el momento
+         nameIngredient.text = temporal.GetComponent<Ingredient>().IngredientName;
         isHolding = true;
     }
 
@@ -97,5 +105,6 @@ public class TakeObject : MonoBehaviour
 
             rgb.velocity = (PlayerLook.position - rgb.position) * modif * Time.deltaTime;
         }
+        
     }
 }

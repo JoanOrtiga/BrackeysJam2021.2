@@ -5,41 +5,44 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     [SerializeField]
-    private float rad = 0.5f;
-    private float power = 10f;
+    private float rad = 3f;
+    private float power = 7f;
+    private float upForce = 2.5f;
 
-    public Collider[] coll;
+    private Vector3 explosionPos;
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.DrawSphere(transform.position, rad);
-    //}
-    private void Explosive()
+    [SerializeField]
+    private Collider[] coll;
+
+    private void OnDrawGizmos()
     {
-        print("a");
+        Gizmos.DrawWireSphere(transform.position, rad);
+    }
 
-        coll = Physics.OverlapSphere(transform.position, rad);
+    private void Detonate()
+    {
+        explosionPos = transform.position;
+        coll = Physics.OverlapSphere(explosionPos, rad);
 
-        for (int i = 0; i < coll.Length; i++)
+        foreach (Collider c in coll)
         {
-            print("a222");
-
-            Rigidbody rb = coll[i].GetComponent<Rigidbody>();
+            Rigidbody rb = c.GetComponent<Rigidbody>();
 
             if (rb != null)
             {
-                rb.AddExplosionForce(power, transform.position, rad);
-                print("a");
+                rb.AddExplosionForce(power, transform.position, rad,upForce, ForceMode.Impulse);
+                print("impulsao");
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void Update()
     {
-        if(other.gameObject.tag == "Impact")
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            Explosive();
-           // Destroy(this.gameObject.);
+            Detonate();
         }
     }
+
 }
