@@ -6,11 +6,12 @@ public class TakeObject : MonoBehaviour
 {
     public GameObject InspectorObject;
     private GameObject temporal;
-    private int index;
+    private float modif = 100f;
+    private float speed = 2f;
 
     //throw
     private bool isHolding = false;
-    public Transform player;
+    private Transform player;
     public Transform PlayerLook;
 
     private Rigidbody rgb;
@@ -45,6 +46,7 @@ public class TakeObject : MonoBehaviour
     private void Start()
     {
         InspectorObject.gameObject.SetActive(false);
+        player = GetComponent<Transform>();
     }
    
     private void ShowObject(GameObject selected)
@@ -90,10 +92,10 @@ public class TakeObject : MonoBehaviour
         {
             InspectorObject.gameObject.SetActive(false);
             
-            rgb.position = Vector3.Lerp(rgb.position, PlayerLook.position, 2f * Time.deltaTime);
+            rgb.position = Vector3.Lerp(rgb.position, PlayerLook.position, speed * Time.deltaTime);
             temporal.gameObject.SetActive(true);
 
-            rgb.velocity = (PlayerLook.position - rgb.position) * 100 * Time.deltaTime;
+            rgb.velocity = (PlayerLook.position - rgb.position) * modif * Time.deltaTime;
         }
     }
 }

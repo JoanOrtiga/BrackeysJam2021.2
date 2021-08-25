@@ -6,8 +6,8 @@ using System.Linq;
 public class ExamineObject : MonoBehaviour
 {
     public Camera camera;
-    public static List<GameObject> interestingObjects;
-    public Transform player;
+    public static List<GameObject> interestingObjects; //hay q borrar esto
+    private Transform player;
     private GameObject objectSelected;
 
     private float maxDistance = 2.5f;
@@ -17,6 +17,7 @@ public class ExamineObject : MonoBehaviour
     private void Start()
     {
         interestingObjects = GameObject.FindGameObjectsWithTag("Interesting").ToList();//TEMPORAL;
+         player = GetComponent<Transform>();
     }
 
     private void Update()
