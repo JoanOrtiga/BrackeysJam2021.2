@@ -17,9 +17,10 @@ public class ExamineObject : MonoBehaviour
     private void Start()
     {
         interestingObjects = GameObject.FindGameObjectsWithTag("Interesting").ToList();//TEMPORAL;
-         player = GetComponent<Transform>();
-    }
+        player = GetComponent<Transform>();
 
+        Physics.IgnoreLayerCollision(9, 9);
+    }
     private void Update()
     {
         if (Input.GetMouseButton(0) && isAInterestingObject())
@@ -27,6 +28,10 @@ public class ExamineObject : MonoBehaviour
             ModeManager.Instance.currentMode = ModeManager.modes.InspectorMode;
             StartCoroutine(ModeManager.Instance.Switch());
             DelegateTakeObject?.Invoke(objectSelected);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            IsAnInteractableObject();
         }
     }
 
@@ -42,7 +47,6 @@ public class ExamineObject : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
         {
-
             if (hit.collider.tag == "Interesting" && IsNearToCatch(hit.transform.position))
             {
                 objectSelected = hit.transform.gameObject;
@@ -50,6 +54,17 @@ public class ExamineObject : MonoBehaviour
             }
         }
         return false;
+    }
 
+    private void IsAnInteractableObject()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
+        {
+            if (hit.collider.tag == "Interactable" && IsNearToCatch(hit.transform.position))
+            {
+                hit.transform.GetComponent<Interactable>().Interact();
+            }
+        }
     }
 }

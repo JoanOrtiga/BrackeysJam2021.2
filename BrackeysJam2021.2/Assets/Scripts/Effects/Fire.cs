@@ -4,38 +4,25 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    private bool fire = false;
     public GameObject fireParticle;
 
-    private void Start()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Liquid")
+        if (other.tag == "Liquid")
         {
             FireOff();
+            
         }
     }
-
-    private void IsOnFire()
+    public void IsOnFire() //pa activar potion
     {
         fireParticle.SetActive(true);
-        fire = true;
+        Interactable.isInteractable = false;
     }
 
     private void FireOff()
     {
         fireParticle.SetActive(false);
-        fire = false;
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            IsOnFire();
-        }
+        Interactable.isInteractable = true;
     }
 }
