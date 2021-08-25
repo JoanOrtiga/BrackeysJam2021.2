@@ -57,10 +57,10 @@ public class TakeObject : MonoBehaviour
                 GameObject spawned = selected.GetComponent<SpawnerItem>().Spawn();
                 temporal = spawned;
 
-                temporal.name = "obj" + index;
-                index++;
+                //temporal.name = "obj" + index;
+                //index++;
 
-                ExamineObject.interestingObjects.Add(temporal);
+                //ExamineObject.interestingObjects.Add(temporal);
 
                 UpdateTheInspector();
 
