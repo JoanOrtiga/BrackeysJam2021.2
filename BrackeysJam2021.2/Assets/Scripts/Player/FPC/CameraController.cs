@@ -19,12 +19,11 @@ public class CameraController : MonoBehaviour
     private static bool cursorLocked;
     void Start()
     {
-        //CursorLock();
-        CursorUnlock();
+        CursorLock();
     }
     void Update()
     {
-        CursorUnlock();
+        //CursorUnlock();
         if (cursorLocked)
             CameraMovement();
     }
@@ -49,8 +48,6 @@ public class CameraController : MonoBehaviour
 
     private void CameraMovement()
     {
-
-
         x = Input.GetAxis("Mouse X") * speed * Time.deltaTime;
         y = Input.GetAxis("Mouse Y") * speed * Time.deltaTime;
 

@@ -129,8 +129,12 @@ public class OrdersManager : MonoBehaviour
         if (!DictionaryExtensionMethods.ContentEquals(currentIngredients, usedIngredients))
         {
             return PotionsManager.badPotion;
+        }else
+        {
+            currentPotion.GetComponent<PotionEffect>().ActivePotionEffect();
+            return currentPotion;
         }
-        return currentPotion;
+       
     }
 
     public void Puntuation()

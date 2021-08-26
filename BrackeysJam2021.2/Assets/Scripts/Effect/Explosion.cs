@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : CaosEffect
+public class Explosion : PotionEffect
 {
     [SerializeField]
     private float rad = 3f;
@@ -11,7 +11,7 @@ public class Explosion : CaosEffect
 
     private Vector3 explosionPos;
 
-    public override void ActiveEffectCaos()
+    public override void ActivePotionEffect()
     {
         Detonate();
     }

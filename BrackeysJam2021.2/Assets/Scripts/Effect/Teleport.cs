@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Teleport : CaosEffect
+public class Teleport : PotionEffect
 {
     [SerializeField]
     private List<SpawnerItem> spawnerItems;
@@ -12,7 +12,7 @@ public class Teleport : CaosEffect
 
     private int random;
 
-    public override void ActiveEffectCaos()
+    public override void ActivePotionEffect()
     {
         TeleportSpawners();
     }
