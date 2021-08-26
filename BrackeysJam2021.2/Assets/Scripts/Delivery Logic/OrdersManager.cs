@@ -8,10 +8,12 @@ public class OrdersManager : MonoBehaviour
     private void OnEnable()
     {
         IngredientsChecker.ingredientUsedDelegate += IngredientUsed;
+        //Create Potion
     }
     private void OnDisable()
     {
         IngredientsChecker.ingredientUsedDelegate -= IngredientUsed;
+        //Create Potion
     }
 
     public delegate void OnOrderStartDelegate(IRecipe recipe, ICustomer customer);
@@ -31,6 +33,7 @@ public class OrdersManager : MonoBehaviour
 
     private IRecipe currentRecipe => RecipesManager.Recipe;
     private ICustomer currentCustomer => CustomersManager.Customer;
+    public GameObject currentPotion => PotionsManager.GetPotion(currentRecipe.Potion);
     private Dictionary<string, int> currentIngredients => currentRecipe.Ingredients;
     private float currentDefaultTime => currentRecipe.DefaultTime;
 
@@ -58,52 +61,6 @@ public class OrdersManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            float newPuntuation = 5;
-            if (!DictionaryExtensionMethods.ContentEquals(currentIngredients, usedIngredients))
-            {
-                if (IncorrectIngredients())
-                {
-                    incorrectIngredients = true;
-                    newPuntuation -= 4;
-                }
-                else
-                {
-                    incorrectQuantities = true;
-                    newPuntuation -= 1.5f;
-                }
-            }
-            if (timeLeft < 0)
-            {
-                if (timeLeft <= -5)
-                {
-                    slowTime3 = true;
-                    newPuntuation -= 2.5f;
-                }
-                else if (timeLeft <= -3)
-                {
-                    slowTime2 = true;
-                    newPuntuation -= 1.5f;
-                }
-                else if (timeLeft <= -1)
-                {
-                    slowTime1 = true;
-                    newPuntuation -= 0.5f;
-                }
-            }
-            if (newPuntuation == 5)
-                perfect = true;
-
-            showExplanationDelegate?.Invoke(mistakes);
-            showStarsDelegate?.Invoke(newPuntuation);
-            puntuationsList.Add(newPuntuation);
-
-            showMedianDelegate?.Invoke(Median(puntuationsList));
-
-            usedIngredients.Clear();
-        }
-
         timeLeft -= Time.deltaTime;
         timeLeftDelegate?.Invoke(timeLeft / currentDefaultTime);
     }
@@ -165,6 +122,63 @@ public class OrdersManager : MonoBehaviour
             ingredients += entry.Key + " x" + entry.Value.ToString() + " / ";
         }
         Debug.Log(ingredients);
+    }
+
+    public GameObject PotionDone()
+    {
+        if (!DictionaryExtensionMethods.ContentEquals(currentIngredients, usedIngredients))
+        {
+            return PotionsManager.badPotion;
+        }
+        return currentPotion;
+    }
+
+    public void Puntuation()
+    {
+        float newPuntuation = 5;
+        if (!DictionaryExtensionMethods.ContentEquals(currentIngredients, usedIngredients))
+        {
+            if (IncorrectIngredients())
+            {
+                incorrectIngredients = true;
+                newPuntuation -= 4;
+            }
+            else
+            {
+                incorrectQuantities = true;
+                newPuntuation -= 1.5f;
+            }
+        }
+        if (timeLeft < 0)
+        {
+            if (timeLeft <= -5)
+            {
+                slowTime3 = true;
+                newPuntuation -= 2.5f;
+            }
+            else if (timeLeft <= -3)
+            {
+                slowTime2 = true;
+                newPuntuation -= 1.5f;
+            }
+            else if (timeLeft <= -1)
+            {
+                slowTime1 = true;
+                newPuntuation -= 0.5f;
+            }
+        }
+        if (newPuntuation == 5)
+            perfect = true;
+
+        showExplanationDelegate?.Invoke(mistakes);
+        showStarsDelegate?.Invoke(newPuntuation);
+        puntuationsList.Add(newPuntuation);
+
+        showMedianDelegate?.Invoke(Median(puntuationsList));
+
+        usedIngredients.Clear();
+
+        StartRecipe();
     }
 }
 public static class DictionaryExtensionMethods

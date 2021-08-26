@@ -5,8 +5,8 @@ using TMPro;
 
 public class TakeObject : MonoBehaviour
 {
-    public GameObject InspectorObject;
-    private GameObject temporal;
+    public UnityEngine.GameObject InspectorObject;
+    private UnityEngine.GameObject temporal;
     private float modif = 100f;
     private float speed = 2f;
 
@@ -18,7 +18,7 @@ public class TakeObject : MonoBehaviour
     private Rigidbody rgb;
 
     //show name
-    public TMP_Text nameIngredient;
+    public TMP_Text nameCatchable; //Ingredients && potions
 
     private void OnEnable()
     {
@@ -40,7 +40,7 @@ public class TakeObject : MonoBehaviour
             else if (Input.GetMouseButtonUp(1))
             {
                 isHolding = false;
-                nameIngredient.text = "";
+                nameCatchable.text = "";
                 ModeManager.Instance.currentMode = ModeManager.modes.NormalMode;
                 StartCoroutine(ModeManager.Instance.Switch());
             }
@@ -51,17 +51,17 @@ public class TakeObject : MonoBehaviour
     {
         InspectorObject.gameObject.SetActive(false);
         player = GetComponent<Transform>();
-        nameIngredient.text = "";
+        nameCatchable.text = "";
     }
    
-    private void ShowObject(GameObject selected)
+    private void ShowObject(UnityEngine.GameObject selected)
     {
         if (!isHolding)
         {
             temporal = selected;
             if (temporal.GetComponent<SpawnerItem>())
             {
-                GameObject spawned = selected.GetComponent<SpawnerItem>().Spawn();
+                UnityEngine.GameObject spawned = selected.GetComponent<SpawnerItem>().Spawn();
                 temporal = spawned;
 
                 //temporal.name = "obj" + index;
@@ -90,7 +90,7 @@ public class TakeObject : MonoBehaviour
         temporal.transform.position = InspectorObject.transform.position;
 
         //if(temporal.GetComponent<Ingredient>()) //PARA Q NO de error por el momento
-         nameIngredient.text = temporal.GetComponent<Ingredient>().IngredientName;
+        nameCatchable.text = temporal.GetComponent<Catchable>().Name;
         isHolding = true;
     }
 

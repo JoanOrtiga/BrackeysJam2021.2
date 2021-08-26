@@ -31,7 +31,7 @@ public class RecipePanel : MonoBehaviour
     private void OrderStart(IRecipe recipe, ICustomer customerName)
     {
         customer.text = customerName.Name;
-        name.text = recipe.Name;
+        name.text = recipe.Potion;
         description.text = recipe.Description;
         ingredients.text = IngredientString(recipe.Ingredients);
     }

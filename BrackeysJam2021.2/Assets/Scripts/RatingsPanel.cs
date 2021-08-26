@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class RatingsPanel : MonoBehaviour
 {
     [SerializeField]
-    private GameObject stars;
+    private UnityEngine.GameObject stars;
     [SerializeField]
     private TextMeshProUGUI explanationText;
 
@@ -66,6 +66,7 @@ public class RatingsPanel : MonoBehaviour
         GetComponent<Canvas>().enabled = false;
         GetComponent<CanvasGroup>().interactable = false;
         Time.timeScale = 1f;
+        CameraController.CursorLock();
     }
 
     private void ShowExplanation(List<bool> mistakes)
@@ -75,6 +76,7 @@ public class RatingsPanel : MonoBehaviour
         explanation = "";
         GetComponent<Canvas>().enabled = true;
         GetComponent<CanvasGroup>().interactable = true;
+        CameraController.CursorUnlock();
         Time.timeScale = 0f;
     }
 

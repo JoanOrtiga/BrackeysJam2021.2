@@ -8,7 +8,7 @@ public class EyePotion : IRecipe
             {"Eye", 3},
             {"Essence", 2},
             };
-    public string Name => "EyePotion";
+    public string Potion => "EyePotion";
     public string Description => "To have better sight";
     public float DefaultTime => 40f;
 }

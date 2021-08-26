@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mareo : MonoBehaviour
 {
-    public GameObject Distorsion;
+    public UnityEngine.GameObject Distorsion;
     private bool change = false;
 
     private void Start()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    public GameObject fireParticle;
+    public UnityEngine.GameObject fireParticle;
 
     private void OnTriggerEnter(Collider other)
     {
