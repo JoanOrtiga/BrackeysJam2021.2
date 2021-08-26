@@ -28,19 +28,9 @@ public class ModeManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && currentMode != modes.NormalMode)
-            StartCoroutine(Cancel());
-
-
         print(currentMode);
     }
-    private IEnumerator Cancel()
-    {
-        yield return new WaitForSeconds(0.25f);
 
-        currentMode = modes.NormalMode;
-        StartCoroutine(Switch());
-    }
     public IEnumerator Switch()
     {
         yield return new WaitForSeconds(0.5f);

@@ -10,10 +10,12 @@ public class TakeObject : MonoBehaviour
     ////////////////////////////////////// * GRASIAS
     ////////////////////////////////////// */
 
-    public GameObject InspectorObject;
+    //public GameObject InspectorObject;
     private GameObject temporal;
-    private float increment = 100f;
-    private float speed = 2f;
+    [SerializeField]
+    private float increment =0.2f;
+    [SerializeField]
+    private float speed = 4f;
 
     //throw
     private bool isHolding = false;
@@ -42,7 +44,7 @@ public class TakeObject : MonoBehaviour
     }
     private void Start()
     {
-        InspectorObject.gameObject.SetActive(false);
+        //InspectorObject.gameObject.SetActive(false);
         player = GetComponent<Transform>();
         nameIngredient.text = "";
     }
@@ -86,9 +88,7 @@ public class TakeObject : MonoBehaviour
                     isHolding = false;
                     print("pus2");
 
-                    rgb.AddRelativeForce(camera.transform.forward * power, ForceMode.Impulse);
-
-                    nameIngredient.text = "";
+                    rgb.AddForce(camera.transform.forward * power, ForceMode.Impulse);
 
                     StartCoroutine(AjustChangeMode()); //hacía conflicto con el modo cambiaba (antes de tiempo por lo que tirabas y cogias en 0.000001 segundos.)
                 }
@@ -97,8 +97,11 @@ public class TakeObject : MonoBehaviour
         }
     }
 
+
     private IEnumerator AjustChangeMode()
     {
+        nameIngredient.text = "";
+
         yield return new WaitForSeconds(0.5f);
 
         ModeManager.Instance.currentMode = ModeManager.modes.NormalMode;
@@ -140,9 +143,10 @@ public class TakeObject : MonoBehaviour
     private void ThrowObject()
     {
         // InspectorObject.gameObject.SetActive(false);
-        rgb.position = Vector3.Lerp(rgb.position, PlayerLook.position, speed * Time.deltaTime);
+        rgb.rotation = transform.rotation;
+        rgb.MovePosition(Vector3.Lerp(rgb.position, PlayerLook.position,  speed * Time.deltaTime));
         //temporal.gameObject.SetActive(true);
-
-        rgb.velocity = (PlayerLook.position - rgb.position) * increment * Time.deltaTime;
+       
+        rgb.velocity = (PlayerLook.position - rgb.position) * speed *Time.deltaTime;
     }
 }
