@@ -92,7 +92,6 @@ public class TakeObject : MonoBehaviour
                     StartCoroutine(AjustChangeMode()); //hacía conflicto con el modo cambiaba (antes de tiempo por lo que tirabas y cogias en 0.000001 segundos.)
                 }
             }
-            print(isHolding);
         }
     }
 

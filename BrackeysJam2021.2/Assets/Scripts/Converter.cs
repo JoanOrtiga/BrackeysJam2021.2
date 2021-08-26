@@ -22,23 +22,14 @@ public class Converter : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if ((other.GetComponent("Ingredient") as Ingredient) != null)
-        {
-            var ingredient = other.GetComponent("Ingredient") as Ingredient;
-            CovertIngredient(ingredient);
-            Destroy(other.gameObject);
-            Debug.Log("Converted");
-        }
-    }
-    private void CovertIngredient(Ingredient ingredient)
+    public void CovertIngredient(Ingredient ingredient)
     {
         foreach (KeyValuePair<string, GameObject> entry in conversions)
         {
             if (string.Equals(entry.Key, ingredient.Name))
             {
                 Instantiate(entry.Value, ingredient.transform.position, Quaternion.identity);
+                Destroy(ingredient.gameObject);
                 return;
             }
         }
