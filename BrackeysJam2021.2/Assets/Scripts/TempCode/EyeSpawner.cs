@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EyeSpawner : MonoBehaviour
 {
-    public UnityEngine.GameObject objectToSpawn;
-    public UnityEngine.GameObject parent;
+    public GameObject objectToSpawn;
+    public GameObject parent;
     public int numberToSpawn;
 
     // Update is called once per frame
