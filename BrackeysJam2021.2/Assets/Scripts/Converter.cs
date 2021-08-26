@@ -27,7 +27,6 @@ public class Converter : MonoBehaviour
         if ((other.GetComponent("Ingredient") as Ingredient) != null)
         {
             var ingredient = other.GetComponent("Ingredient") as Ingredient;
-            ExamineObject.interestingObjects.Remove(other.gameObject);
             CovertIngredient(ingredient);
             Destroy(other.gameObject);
             Debug.Log("Converted");

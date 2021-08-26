@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5059830084142960947}
   - component: {fileID: 5059830084142960945}
   - component: {fileID: 5059830084142960946}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Other
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5059830085099923021}
   - component: {fileID: 5059830085099923022}
   - component: {fileID: 5059830085099923023}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Potion
   m_TagString: Interesting
   m_Icon: {fileID: 0}
