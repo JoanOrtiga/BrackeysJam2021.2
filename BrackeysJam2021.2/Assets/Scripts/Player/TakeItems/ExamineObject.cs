@@ -23,10 +23,11 @@ public class ExamineObject : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButton(0) && isAInterestingObject())
+        if (ModeManager.Instance.currentMode != ModeManager.modes.InspectorMode && Input.GetMouseButtonDown(0) && isAInterestingObject())
         {
             ModeManager.Instance.currentMode = ModeManager.modes.InspectorMode;
             StartCoroutine(ModeManager.Instance.Switch());
+            print("pus");
             DelegateTakeObject?.Invoke(objectSelected);
         }
         if (Input.GetKeyDown(KeyCode.E))

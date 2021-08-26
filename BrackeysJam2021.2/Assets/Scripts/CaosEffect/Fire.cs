@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Fire : CaosEffect
 {
-    public GameObject fireParticle;
-
     public delegate void FireDelegate(bool boolean);
     public static FireDelegate delegateFire;
 
@@ -33,16 +31,16 @@ public class Fire : CaosEffect
         delegateFire?.Invoke(false);
         Interactable.isInteractable = true;
     }
-    //private void Update()
-    //{
+    private void Update()
+    {
 
 
-    //    if (Input.GetKeyDown(KeyCode.Y))
-    //    {
-    //        IsOnFire();
-    //        print("y");
-    //    }
-            
-    //}
- 
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            IsOnFire();
+            print("y");
+        }
+
+    }
+
 }

@@ -27,15 +27,13 @@ public abstract class Interactable : MonoBehaviour
             }
         }
     }
+
     public void Interact()
     {
         if(isInteractable)
         {
             Active();
         }
-
-
-       
     }
     public abstract void Active();
 }
