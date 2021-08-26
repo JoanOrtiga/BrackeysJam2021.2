@@ -30,6 +30,9 @@ public class ModeManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && currentMode != modes.NormalMode)
             StartCoroutine(Cancel());
+
+
+        print(currentMode);
     }
     private IEnumerator Cancel()
     {

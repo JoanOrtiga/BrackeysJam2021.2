@@ -15,20 +15,31 @@ public class Converter : MonoBehaviour
     private void Awake()
     {
         conversions = new Dictionary<string, GameObject>();
+        Debug.Log(ingredients.Count + " " + convertedIngredients.Count);
         for (int i = 0; i < Mathf.Min(ingredients.Count, convertedIngredients.Count); i++)
         {
             conversions.Add(ingredients[i], convertedIngredients[i]);
         }
     }
 
-    public void CovertIngredient(Ingredient ingredient)
+    private void OnTriggerExit(Collider other)
+    {
+        if ((other.GetComponent("Ingredient") as Ingredient) != null)
+        {
+            var ingredient = other.GetComponent("Ingredient") as Ingredient;
+            ExamineObject.interestingObjects.Remove(other.gameObject);
+            CovertIngredient(ingredient);
+            Destroy(other.gameObject);
+            Debug.Log("Converted");
+        }
+    }
+    private void CovertIngredient(Ingredient ingredient)
     {
         foreach (KeyValuePair<string, GameObject> entry in conversions)
         {
             if (string.Equals(entry.Key, ingredient.Name))
             {
                 Instantiate(entry.Value, ingredient.transform.position, Quaternion.identity);
-                Destroy(ingredient.gameObject);
                 return;
             }
         }

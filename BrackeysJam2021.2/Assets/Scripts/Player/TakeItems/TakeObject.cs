@@ -5,9 +5,14 @@ using TMPro;
 
 public class TakeObject : MonoBehaviour
 {
-    public UnityEngine.GameObject InspectorObject;
-    private UnityEngine.GameObject temporal;
-    private float modif = 100f;
+    ///////////////////////////////////////*NO BORRAR LO QUE HAY COMENTADO POR SI
+    ////////////////////////////////////// * ACASO TOCA RECUPERARLO
+    ////////////////////////////////////// * GRASIAS
+    ////////////////////////////////////// */
+
+    public GameObject InspectorObject;
+    private GameObject temporal;
+    private float increment = 100f;
     private float speed = 2f;
 
     //throw
@@ -18,59 +23,98 @@ public class TakeObject : MonoBehaviour
     private Rigidbody rgb;
 
     //show name
-    public TMP_Text nameCatchable; //Ingredients && potions
+    public TMP_Text nameIngredient;
+
+    //effect potion
+    [SerializeField]
+    private float power = 1f;
+    public Camera camera;
 
     private void OnEnable()
     {
         ExamineObject.DelegateTakeObject += ShowObject;
+        StrongEffect.DelegatStrong += GetPower;
     }
-
     private void OnDisable()
     {
         ExamineObject.DelegateTakeObject -= ShowObject;
+        StrongEffect.DelegatStrong -= GetPower;
+    }
+    private void Start()
+    {
+        InspectorObject.gameObject.SetActive(false);
+        player = GetComponent<Transform>();
+        nameIngredient.text = "";
+    }
+    private void GetPower(float temporalValue)
+    {
+        power = temporalValue;
     }
     private void Update()
     {
         if (ModeManager.Instance.currentMode == ModeManager.modes.InspectorMode)
         {
-            if (Input.GetMouseButton(1) && isHolding)
-            {
-                ThrowObject();
-            }
-            else if (Input.GetMouseButtonUp(1))
+            //if (Input.GetMouseButton(1) && isHolding)
+            //{
+            //    ThrowObject();
+            //}
+            //else if (Input.GetMouseButtonUp(1))
+            //{
+            //    isHolding = false;
+
+            //    rgb.AddRelativeForce(camera.transform.forward * power, ForceMode.Impulse);
+
+            //    nameIngredient.text = "";
+
+            //    ModeManager.Instance.currentMode = ModeManager.modes.NormalMode;
+            //    StartCoroutine(ModeManager.Instance.Switch());
+            //}
+
+
+            if (temporal == null)
             {
                 isHolding = false;
-                nameCatchable.text = "";
-                ModeManager.Instance.currentMode = ModeManager.modes.NormalMode;
-                StartCoroutine(ModeManager.Instance.Switch());
+                StartCoroutine(AjustChangeMode());
             }
+
+            if (isHolding)
+            {
+                ThrowObject();
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    isHolding = false;
+                    print("pus2");
+
+                    rgb.AddRelativeForce(camera.transform.forward * power, ForceMode.Impulse);
+
+                    nameIngredient.text = "";
+
+                    StartCoroutine(AjustChangeMode()); //hacía conflicto con el modo cambiaba (antes de tiempo por lo que tirabas y cogias en 0.000001 segundos.)
+                }
+            }
+            print(isHolding);
         }
     }
 
-    private void Start()
+    private IEnumerator AjustChangeMode()
     {
-        InspectorObject.gameObject.SetActive(false);
-        player = GetComponent<Transform>();
-        nameCatchable.text = "";
+        yield return new WaitForSeconds(0.5f);
+
+        ModeManager.Instance.currentMode = ModeManager.modes.NormalMode;
+        StartCoroutine(ModeManager.Instance.Switch());
     }
-   
-    private void ShowObject(UnityEngine.GameObject selected)
+    private void ShowObject(GameObject selected)
     {
         if (!isHolding)
         {
             temporal = selected;
             if (temporal.GetComponent<SpawnerItem>())
             {
-                UnityEngine.GameObject spawned = selected.GetComponent<SpawnerItem>().Spawn();
+                GameObject spawned = selected.GetComponent<SpawnerItem>().Spawn();
                 temporal = spawned;
 
-                //temporal.name = "obj" + index;
-                //index++;
-
-                //ExamineObject.interestingObjects.Add(temporal);
-
                 UpdateTheInspector();
-
             }
             else
             {
@@ -80,31 +124,25 @@ public class TakeObject : MonoBehaviour
         }
     }
 
-    private void UpdateTheInspector() 
+    private void UpdateTheInspector()
     {
-        InspectorObject.gameObject.SetActive(true);
-        InspectorObject.GetComponent<MeshFilter>().mesh = temporal.GetComponent<MeshFilter>().mesh;
-        temporal.gameObject.SetActive(false);
+        //InspectorObject.gameObject.SetActive(true);
+        //InspectorObject.GetComponent<MeshFilter>().mesh = temporal.GetComponent<MeshFilter>().mesh;
+        //temporal.gameObject.SetActive(false);
 
         rgb = temporal.GetComponent<Rigidbody>();
-        temporal.transform.position = InspectorObject.transform.position;
+        //temporal.transform.position = InspectorObject.transform.position;
 
-        //if(temporal.GetComponent<Ingredient>()) //PARA Q NO de error por el momento
-        nameCatchable.text = temporal.GetComponent<Catchable>().Name;
+        nameIngredient.text = temporal.GetComponent<Ingredient>().IngredientName;
         isHolding = true;
     }
 
     private void ThrowObject()
     {
-        if (isHolding)
-        {
-            InspectorObject.gameObject.SetActive(false);
-            
-            rgb.position = Vector3.Lerp(rgb.position, PlayerLook.position, speed * Time.deltaTime);
-            temporal.gameObject.SetActive(true);
+        // InspectorObject.gameObject.SetActive(false);
+        rgb.position = Vector3.Lerp(rgb.position, PlayerLook.position, speed * Time.deltaTime);
+        //temporal.gameObject.SetActive(true);
 
-            rgb.velocity = (PlayerLook.position - rgb.position) * modif * Time.deltaTime;
-        }
-        
+        rgb.velocity = (PlayerLook.position - rgb.position) * increment * Time.deltaTime;
     }
 }

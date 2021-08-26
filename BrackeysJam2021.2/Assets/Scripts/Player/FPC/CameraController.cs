@@ -27,8 +27,28 @@ public class CameraController : MonoBehaviour
             CameraMovement();
     }
 
+    private void OnEnable()
+    {
+        MouseInvertEffect.DelegateMouseInvert += GetInvert;
+    }
+
+    private void OnDisable()
+    {
+        MouseInvertEffect.DelegateMouseInvert -= GetInvert;
+    }
+
+    private void GetInvert(bool invert)
+    {
+        if (invert)
+            speed = speed * -1;
+        else
+            speed = 500f;
+    }
+
     private void CameraMovement()
     {
+
+
         x = Input.GetAxis("Mouse X") * speed * Time.deltaTime;
         y = Input.GetAxis("Mouse Y") * speed * Time.deltaTime;
 
