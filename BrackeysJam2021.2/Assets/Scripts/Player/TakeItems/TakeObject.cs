@@ -86,7 +86,6 @@ public class TakeObject : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     isHolding = false;
-                    print("pus2");
 
                     rgb.AddForce(camera.transform.forward * power, ForceMode.Impulse);
 

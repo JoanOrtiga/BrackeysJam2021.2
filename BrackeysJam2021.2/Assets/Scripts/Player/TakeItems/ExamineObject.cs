@@ -25,7 +25,6 @@ public class ExamineObject : MonoBehaviour
         {
             ModeManager.Instance.currentMode = ModeManager.modes.InspectorMode;
             StartCoroutine(ModeManager.Instance.Switch());
-            print("pus");
             DelegateTakeObject?.Invoke(objectSelected);
         }
         if (Input.GetKeyDown(KeyCode.E))
