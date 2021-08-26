@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
 using System.Linq;
+using TMPro;
 
 
 public class CustomersManager : MonoBehaviour
@@ -13,6 +14,9 @@ public class CustomersManager : MonoBehaviour
     private static ICustomer customer;
 
     public static ICustomer Customer { get { return customer; } }
+
+    public delegate void CustomerDialogueDelegate(ICustomer customer);
+    public static CustomerDialogueDelegate delegateCustomerDialogue;
 
     private void Awake()
     {
@@ -36,5 +40,8 @@ public class CustomersManager : MonoBehaviour
     public static void SetRandomCustomer()
     {
         customer = customersList[UnityEngine.Random.Range(0, customersList.Count)];
+
+        delegateCustomerDialogue?.Invoke(customer);
     }
+    
 }
