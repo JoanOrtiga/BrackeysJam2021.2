@@ -7,11 +7,11 @@ public class ExamineObject : MonoBehaviour
 {
     public Camera camera;
     private Transform player;
-    private UnityEngine.GameObject objectSelected;
+    private GameObject objectSelected;
 
     private float maxDistance = 2.5f;
 
-    public delegate void ModeInspector(UnityEngine.GameObject itemSelected);
+    public delegate void ModeInspector(GameObject itemSelected);
     public static ModeInspector DelegateTakeObject;
     private void Start()
     {

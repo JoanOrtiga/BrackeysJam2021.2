@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform player;
-    public UnityEngine.GameObject Inspector;
+    public GameObject Inspector;
     private float x;
     private float y;
 
@@ -19,10 +19,12 @@ public class CameraController : MonoBehaviour
     private static bool cursorLocked;
     void Start()
     {
-        CursorLock();
+        //CursorLock();
+        CursorUnlock();
     }
     void Update()
     {
+        CursorUnlock();
         if (cursorLocked)
             CameraMovement();
     }

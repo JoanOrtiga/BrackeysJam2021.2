@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SpawnerItem : MonoBehaviour
 {
-    public UnityEngine.GameObject Prefab;
-    public UnityEngine.GameObject SpaceToSave;
+    public GameObject Prefab;
+    public GameObject SpaceToSave;
 
 
-    public UnityEngine.GameObject Spawn()
+    public GameObject Spawn()
     {
           return Instantiate(Prefab, transform.position, Quaternion.identity, SpaceToSave.transform);
     }
