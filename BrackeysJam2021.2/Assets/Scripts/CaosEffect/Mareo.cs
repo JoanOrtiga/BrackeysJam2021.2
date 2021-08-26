@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mareo : MonoBehaviour
+public class Mareo : CaosEffect
 {
     public GameObject Distorsion;
-    private bool IsDistorsion = false;
+    //private bool IsDistorsion = false;
+    private bool applied = false;
+    private float timer = 0;
+    private float valueTimer = 30f; //secs
 
     private void Start()
     {
@@ -21,6 +24,17 @@ public class Mareo : MonoBehaviour
         //    else
         //        ChangeToNormal();
         //}
+
+        if (applied)
+        {
+            timer += Time.deltaTime;
+            if (timer >= valueTimer)
+            {
+                ChangeToNormal();
+                applied = false;
+                timer = 0;
+            }
+        }
     }
 
     private void ChangeToDistorsion()
@@ -33,4 +47,9 @@ public class Mareo : MonoBehaviour
         Distorsion.gameObject.SetActive(false);
     }
 
+    public override void ActiveEffectCaos()
+    {
+        ChangeToDistorsion();
+        applied = true;
+    }
 }

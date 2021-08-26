@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 57288213}
   - component: {fileID: 57288212}
   - component: {fileID: 57288211}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ESSENspawner
   m_TagString: Interesting
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 475948539}
   - component: {fileID: 475948538}
   - component: {fileID: 475948542}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EyeSpawner
   m_TagString: Interesting
   m_Icon: {fileID: 0}
@@ -560,6 +560,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 2401264032376292730, guid: 8249949b38446174dadacdda8ceb603d, type: 3}
   SpaceToSave: {fileID: 1446888283}
+--- !u!1 &572991261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 572991262}
+  - component: {fileID: 572991265}
+  - component: {fileID: 572991264}
+  - component: {fileID: 572991263}
+  m_Layer: 6
+  m_Name: Distorsion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &572991262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572991261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8414545007347446622}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &572991263
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572991261}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &572991264
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572991261}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &572991265
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572991261}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &666857099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -995,7 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06bdb5c422eb1b4eadbbd1a1ff3ec02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Distorsion: {fileID: 1344427174}
+  Distorsion: {fileID: 0}
 --- !u!114 &1184391764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1033,11 +1130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc48c0764250684199cff05e20c87ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1344427174 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8414545008150538235, guid: dc4550b702cdb594596fbbb2b123c344, type: 3}
-  m_PrefabInstance: {fileID: 8414545007347446621}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1345236205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,6 +1352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2e43a0322e35a48be58891da7c4c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerPoint: {fileID: 0}
+  ordersManager: {fileID: 0}
 --- !u!1 &1446888283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,7 +1767,7 @@ GameObject:
   - component: {fileID: 1783335028}
   - component: {fileID: 1783335027}
   - component: {fileID: 1783335031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FrogSpawner
   m_TagString: Interesting
   m_Icon: {fileID: 0}
@@ -2005,7 +2099,7 @@ GameObject:
   - component: {fileID: 2009535637}
   - component: {fileID: 2009535636}
   - component: {fileID: 2009535635}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EyeSpawner2
   m_TagString: Interesting
   m_Icon: {fileID: 0}
@@ -7180,3 +7274,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc4550b702cdb594596fbbb2b123c344, type: 3}
+--- !u!4 &8414545007347446622 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8414545006911045561, guid: dc4550b702cdb594596fbbb2b123c344, type: 3}
+  m_PrefabInstance: {fileID: 8414545007347446621}
+  m_PrefabAsset: {fileID: 0}
