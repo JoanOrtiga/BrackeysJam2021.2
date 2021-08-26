@@ -19,12 +19,10 @@ public class CameraController : MonoBehaviour
     private static bool cursorLocked;
     void Start()
     {
-        //CursorLock();
-        CursorUnlock();
+        CursorLock();
     }
     void Update()
     {
-        CursorUnlock();
         if (cursorLocked)
             CameraMovement();
     }

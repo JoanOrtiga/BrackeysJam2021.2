@@ -1118,9 +1118,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stars: {fileID: 967330115319380136}
   explanationText: {fileID: 967330115292056334}
-  incorrectIngredients: Incorrect Ingredients.
-  incorrectQuantities: Incorrect Quantities.
-  slowTime1: A bit slow.
-  slowTime2: Too slow.
-  slowTime3: You're a turtle.
-  perfect: Perfect.
+  customerText: {fileID: 967330115603325715}

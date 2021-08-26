@@ -86,14 +86,12 @@ public class TakeObject : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     isHolding = false;
-                    print("pus2");
 
                     rgb.AddForce(camera.transform.forward * power, ForceMode.Impulse);
 
                     StartCoroutine(AjustChangeMode()); //hacía conflicto con el modo cambiaba (antes de tiempo por lo que tirabas y cogias en 0.000001 segundos.)
                 }
             }
-            print(isHolding);
         }
     }
 

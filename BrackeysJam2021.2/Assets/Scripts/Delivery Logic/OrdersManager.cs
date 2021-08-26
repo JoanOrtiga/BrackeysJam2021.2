@@ -21,12 +21,8 @@ public class OrdersManager : MonoBehaviour
     public delegate void OnTimeLeftDelegate(float timeLeftPercentage);
     public static OnTimeLeftDelegate timeLeftDelegate;
 
-    public delegate void OnShowExplanationDelegate(List<bool> mistakes);
+    public delegate void OnShowExplanationDelegate(List<bool> mistakes, float stars, string customer);
     public static OnShowExplanationDelegate showExplanationDelegate;
-    public delegate void OnShowStarsDelegate(float puntuation);
-    public static OnShowStarsDelegate showStarsDelegate;
-    public delegate void OnShowCustomerDelegate(string customer);
-    public static OnShowCustomerDelegate showCustomerDelegate;
 
     public delegate void OnShowMedianDelegate(float puntuation);
     public static OnShowMedianDelegate showMedianDelegate;
@@ -170,9 +166,7 @@ public class OrdersManager : MonoBehaviour
         if (newPuntuation == 5)
             perfect = true;
 
-        showExplanationDelegate?.Invoke(mistakes);
-        showStarsDelegate?.Invoke(newPuntuation);
-        puntuationsList.Add(newPuntuation);
+        showExplanationDelegate?.Invoke(mistakes, newPuntuation, currentCustomer.Name);
 
         showMedianDelegate?.Invoke(Median(puntuationsList));
 
