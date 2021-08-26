@@ -61,7 +61,6 @@ public class RatingPanel : MonoBehaviour
         var explanation = explanationGeneration(mistakes);
         var temp = Instantiate(customerRating, verticalLayer);
         temp.GetComponent<CustomerRating>().Generate(explanation, stars, customer);
-        Debug.Log("explanation");
     }
     private string explanationGeneration(List<bool> mistakes)
     {

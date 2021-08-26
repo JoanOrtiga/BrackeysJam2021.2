@@ -18,6 +18,7 @@ public class CustomerRating : MonoBehaviour
         explanationText.text = explanation;
         customerText.text = customer;
         ShowStars(stars);
+        Debug.Log("explanation");
     }
 
     private void ShowStars (float puntuation)
