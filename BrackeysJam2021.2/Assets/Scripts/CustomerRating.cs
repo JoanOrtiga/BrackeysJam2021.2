@@ -4,10 +4,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class RatingsPanel : MonoBehaviour
+public class CustomerRating : MonoBehaviour
 {
     [SerializeField]
-    private UnityEngine.GameObject stars;
+    private GameObject stars;
     [SerializeField]
     private TextMeshProUGUI explanationText;
 
