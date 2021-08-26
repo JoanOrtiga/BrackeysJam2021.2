@@ -136,7 +136,7 @@ public class TakeObject : MonoBehaviour
         rgb = temporal.GetComponent<Rigidbody>();
         //temporal.transform.position = InspectorObject.transform.position;
 
-        nameIngredient.text = temporal.GetComponent<Ingredient>().IngredientName;
+        nameIngredient.text = temporal.GetComponent<Catchable>().Name;
         isHolding = true;
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform player;
-    public GameObject Inspector;
+    public UnityEngine.GameObject Inspector;
     private float x;
     private float y;
 
@@ -15,13 +15,16 @@ public class CameraController : MonoBehaviour
     private float speed = 500f;
 
     private float rotationX;
+
+    private static bool cursorLocked;
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        CursorLock();
     }
     void Update()
     {
-        CameraMovement();
+        if (cursorLocked)
+            CameraMovement();
     }
 
     private void OnEnable()
@@ -54,5 +57,17 @@ public class CameraController : MonoBehaviour
 
         this.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         player.Rotate(Vector3.up, x);
+    }
+    public static void CursorUnlock()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        cursorLocked = false;
+    }
+    public static void CursorLock()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        cursorLocked = true;
     }
 }

@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Cook : Interactable
 {
+    [SerializeField]
+    private Transform spawnerPoint;
+    [SerializeField]
+    private OrdersManager ordersManager;
     public override void Active()
     {
-        print("toy cooking");
+        Instantiate(ordersManager.PotionDone(), spawnerPoint.position, Quaternion.identity);
     }
 }

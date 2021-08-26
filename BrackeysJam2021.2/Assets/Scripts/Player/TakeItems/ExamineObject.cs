@@ -6,17 +6,15 @@ using System.Linq;
 public class ExamineObject : MonoBehaviour
 {
     public Camera camera;
-    public static List<GameObject> interestingObjects; //hay q borrar esto
     private Transform player;
-    private GameObject objectSelected;
+    private UnityEngine.GameObject objectSelected;
 
     private float maxDistance = 2.5f;
 
-    public delegate void ModeInspector(GameObject itemSelected);
+    public delegate void ModeInspector(UnityEngine.GameObject itemSelected);
     public static ModeInspector DelegateTakeObject;
     private void Start()
     {
-        interestingObjects = GameObject.FindGameObjectsWithTag("Interesting").ToList();//TEMPORAL;
         player = GetComponent<Transform>();
 
         Physics.IgnoreLayerCollision(9, 9);

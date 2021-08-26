@@ -27,7 +27,6 @@ public class Converter : MonoBehaviour
         if ((other.GetComponent("Ingredient") as Ingredient) != null)
         {
             var ingredient = other.GetComponent("Ingredient") as Ingredient;
-            ExamineObject.interestingObjects.Remove(other.gameObject);
             CovertIngredient(ingredient);
             Destroy(other.gameObject);
             Debug.Log("Converted");
@@ -37,7 +36,7 @@ public class Converter : MonoBehaviour
     {
         foreach (KeyValuePair<string, GameObject> entry in conversions)
         {
-            if (string.Equals(entry.Key, ingredient.IngredientName))
+            if (string.Equals(entry.Key, ingredient.Name))
             {
                 Instantiate(entry.Value, ingredient.transform.position, Quaternion.identity);
                 return;
