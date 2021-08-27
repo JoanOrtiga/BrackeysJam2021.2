@@ -10,6 +10,7 @@ public class CouldronLiquid : MonoBehaviour
     private static readonly int Fill = Shader.PropertyToID("_Fill");
     private static readonly int TopColor = Shader.PropertyToID("TopColor");
 
+    private Color lastColor;
 
     private void Awake()
     {
@@ -22,13 +23,21 @@ public class CouldronLiquid : MonoBehaviour
 
     public void ChangeColor(Color color)
     {
-        _liquidMaterial.SetColor(TopColor, color);
+        float factor = 1;//Mathf.Pow(2,2);
+        lastColor = CombineColors(lastColor, color);
+        _liquidMaterial.SetColor(TopColor, lastColor * factor);
     }
 
-    public void FillCauldron()
+    public IEnumerator FillCauldron()
     {
-        _fillAmmount += 0.2f;
-        _liquidMaterial.SetFloat(Fill, _fillAmmount);
+        while (_fillAmmount >= 0.98f)
+        {
+            _fillAmmount += 0.01f;
+            _liquidMaterial.SetFloat(Fill, _fillAmmount);
+            yield return null;
+        }
+
+        yield return null;
     }
 
     private void RestartPotion()
@@ -36,5 +45,16 @@ public class CouldronLiquid : MonoBehaviour
         _fillAmmount = 0;
         _liquidMaterial.SetFloat(Fill, _fillAmmount);
         ChangeColor(Color.red);
+    }
+    
+    public static Color CombineColors(params Color[] aColors)
+    {
+        Color result = new Color(0,0,0,0);
+        foreach(Color c in aColors)
+        {
+            result += c;
+        }
+        result /= aColors.Length;
+        return result;
     }
 }
