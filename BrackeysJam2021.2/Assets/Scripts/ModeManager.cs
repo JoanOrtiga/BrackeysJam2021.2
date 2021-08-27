@@ -26,11 +26,6 @@ public class ModeManager : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void Update()
-    {
-        print(currentMode);
-    }
-
     public IEnumerator Switch()
     {
         yield return new WaitForSeconds(0.5f);
