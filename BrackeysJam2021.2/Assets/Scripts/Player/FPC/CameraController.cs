@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     private float y;
 
     private float minLimit = -60f;
-    private float maxLimit = 60f;
+    private float maxLimit = 90f;
 
     private float speed = 500f;
 
