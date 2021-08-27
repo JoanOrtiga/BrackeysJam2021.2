@@ -107,6 +107,7 @@ public class OrdersManager : MonoBehaviour
         {
             usedIngredients.Add(name, 1);
         }
+
         PrintIngredients(usedIngredients);
     }
 
