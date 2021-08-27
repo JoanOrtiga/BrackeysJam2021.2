@@ -10,10 +10,12 @@ public class TakeObject : MonoBehaviour
     ////////////////////////////////////// * GRASIAS
     ////////////////////////////////////// */
 
-    public GameObject InspectorObject;
+    //public GameObject InspectorObject;
     private GameObject temporal;
-    private float increment = 100f;
-    private float speed = 2f;
+    [SerializeField]
+    private float increment =0.2f;
+    [SerializeField]
+    private float speed = 4f;
 
     //throw
     private bool isHolding = false;
@@ -42,7 +44,7 @@ public class TakeObject : MonoBehaviour
     }
     private void Start()
     {
-        InspectorObject.gameObject.SetActive(false);
+        //InspectorObject.gameObject.SetActive(false);
         player = GetComponent<Transform>();
         nameIngredient.text = "";
     }
@@ -52,7 +54,7 @@ public class TakeObject : MonoBehaviour
     }
     private void Update()
     {
-        if (ModeManager.Instance.currentMode == ModeManager.modes.InspectorMode)
+        if (ModeManager.Instance.currentMode == ModeManager.Modes.InspectorMode)
         {
             //if (Input.GetMouseButton(1) && isHolding)
             //{
@@ -84,24 +86,23 @@ public class TakeObject : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     isHolding = false;
-                    print("pus2");
 
-                    rgb.AddRelativeForce(camera.transform.forward * power, ForceMode.Impulse);
+                    rgb.AddForce(camera.transform.forward * power, ForceMode.Impulse);
 
-                    nameIngredient.text = "";
-
-                    StartCoroutine(AjustChangeMode()); //hacía conflicto con el modo cambiaba (antes de tiempo por lo que tirabas y cogias en 0.000001 segundos.)
+                    StartCoroutine(AjustChangeMode()); //hacÃ­a conflicto con el modo cambiaba (antes de tiempo por lo que tirabas y cogias en 0.000001 segundos.)
                 }
             }
-            print(isHolding);
         }
     }
 
+
     private IEnumerator AjustChangeMode()
     {
+        nameIngredient.text = "";
+
         yield return new WaitForSeconds(0.5f);
 
-        ModeManager.Instance.currentMode = ModeManager.modes.NormalMode;
+        ModeManager.Instance.currentMode = ModeManager.Modes.NormalMode;
         StartCoroutine(ModeManager.Instance.Switch());
     }
     private void ShowObject(GameObject selected)
@@ -140,9 +141,10 @@ public class TakeObject : MonoBehaviour
     private void ThrowObject()
     {
         // InspectorObject.gameObject.SetActive(false);
-        rgb.position = Vector3.Lerp(rgb.position, PlayerLook.position, speed * Time.deltaTime);
+        rgb.rotation = transform.rotation;
+        rgb.MovePosition(Vector3.Lerp(rgb.position, PlayerLook.position,  speed * Time.deltaTime));
         //temporal.gameObject.SetActive(true);
-
-        rgb.velocity = (PlayerLook.position - rgb.position) * increment * Time.deltaTime;
+       
+        rgb.velocity = (PlayerLook.position - rgb.position) * speed *Time.deltaTime;
     }
 }

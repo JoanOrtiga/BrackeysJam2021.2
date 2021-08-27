@@ -7,11 +7,11 @@ public class ExamineObject : MonoBehaviour
 {
     public Camera camera;
     private Transform player;
-    private UnityEngine.GameObject objectSelected;
+    private GameObject objectSelected;
 
     private float maxDistance = 2.5f;
 
-    public delegate void ModeInspector(UnityEngine.GameObject itemSelected);
+    public delegate void ModeInspector(GameObject itemSelected);
     public static ModeInspector DelegateTakeObject;
     private void Start()
     {
@@ -21,11 +21,10 @@ public class ExamineObject : MonoBehaviour
     }
     private void Update()
     {
-        if (ModeManager.Instance.currentMode != ModeManager.modes.InspectorMode && Input.GetMouseButtonDown(0) && isAInterestingObject())
+        if (ModeManager.Instance.currentMode != ModeManager.Modes.InspectorMode && Input.GetMouseButtonDown(0) && isAInterestingObject())
         {
-            ModeManager.Instance.currentMode = ModeManager.modes.InspectorMode;
+            ModeManager.Instance.currentMode = ModeManager.Modes.InspectorMode;
             StartCoroutine(ModeManager.Instance.Switch());
-            print("pus");
             DelegateTakeObject?.Invoke(objectSelected);
         }
         if (Input.GetKeyDown(KeyCode.E))

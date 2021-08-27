@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : CaosEffect
+public class Explosion : PotionEffect
 {
     [SerializeField]
     private float rad = 3f;
@@ -11,26 +11,25 @@ public class Explosion : CaosEffect
 
     private Vector3 explosionPos;
 
-    public override void ActiveEffectCaos()
+    public override void ActivePotionEffect()
     {
-        Detonate();
+        StartCoroutine(Detonate());
     }
-
-    [SerializeField]
-
-    private void Detonate() //FUNCION PARA ACTIVAR EXPLOSIÓN
+    private IEnumerator Detonate()
     {
+        yield return new WaitForSeconds(0.25f);
         
         explosionPos = transform.position;
         Collider[] coll = Physics.OverlapSphere(explosionPos, rad);
 
         foreach (Collider c in coll)
         {
+            print(c);
             Rigidbody rb = c.GetComponent<Rigidbody>();
-
+            
             if (rb != null)
             {
-                rb.AddExplosionForce(power, transform.position, rad, upForce, ForceMode.Impulse);
+                rb.AddExplosionForce(power, explosionPos, rad, upForce, ForceMode.Impulse);
             }
         }
     }

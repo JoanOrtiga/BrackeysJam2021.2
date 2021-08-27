@@ -3,36 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Teleport : CaosEffect
+public class Teleport : PotionEffect
 {
-    [SerializeField]
+    
     private List<SpawnerItem> spawnerItems;
     [SerializeField]
     private Vector3[] initialPos;
 
     private int random;
 
-    public override void ActiveEffectCaos()
+    public override void ActivePotionEffect()
     {
         TeleportSpawners();
     }
 
-    private void Start()
+    private void Awake()
     {
         spawnerItems = FindObjectsOfType<SpawnerItem>().ToList();
-        initialPos = new Vector3[spawnerItems.Count];
-
-        
+        initialPos = new Vector3[spawnerItems.Count];        
     }
 
     private void TeleportSpawners() //FUNCIÓN PARA ACTIVAR
     {
+
         for (int i = 0; i < spawnerItems.Count; i++)
         {
             initialPos[i] = spawnerItems[i].transform.position;
         }
 
-        random = Random.Range(0, spawnerItems.Count); 
+        random = Random.Range(1, spawnerItems.Count); 
 
         for (int i = 0; i < spawnerItems.Count; i++)
         {
@@ -44,12 +43,12 @@ public class Teleport : CaosEffect
 
         }
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            TeleportSpawners();
-        }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.J))
+    //    {
+    //        TeleportSpawners();
+    //    }
 
-    }
+    //}
 }

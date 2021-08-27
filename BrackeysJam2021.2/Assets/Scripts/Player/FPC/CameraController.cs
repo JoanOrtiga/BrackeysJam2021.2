@@ -5,24 +5,29 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform player;
-    public UnityEngine.GameObject Inspector;
+    public GameObject Inspector;
     private float x;
     private float y;
 
     private float minLimit = -60f;
-    private float maxLimit = 60f;
+    private float maxLimit = 90f;
 
     private float speed = 500f;
 
     private float rotationX;
 
     private static bool cursorLocked;
+
+    public GameObject DistorsionGameObject;
+
+   
     void Start()
     {
         CursorLock();
     }
     void Update()
     {
+        //CursorUnlock();
         if (cursorLocked)
             CameraMovement();
     }
@@ -30,11 +35,18 @@ public class CameraController : MonoBehaviour
     private void OnEnable()
     {
         MouseInvertEffect.DelegateMouseInvert += GetInvert;
+        Mareo.distorsionDelegate += GetDistorsionObject;
     }
 
     private void OnDisable()
     {
         MouseInvertEffect.DelegateMouseInvert -= GetInvert;
+        Mareo.distorsionDelegate -= GetDistorsionObject;
+    }
+
+    private GameObject GetDistorsionObject()
+    {
+        return DistorsionGameObject;
     }
 
     private void GetInvert(bool invert)
@@ -47,8 +59,6 @@ public class CameraController : MonoBehaviour
 
     private void CameraMovement()
     {
-
-
         x = Input.GetAxis("Mouse X") * speed * Time.deltaTime;
         y = Input.GetAxis("Mouse Y") * speed * Time.deltaTime;
 

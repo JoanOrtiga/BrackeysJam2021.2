@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public UnityEngine.GameObject objectToSpawn;
-    public UnityEngine.GameObject parent;
+    public GameObject objectToSpawn;
+    public GameObject parent;
     public int numberToSpawn;
     public int limit = 20;
     public float rate;
