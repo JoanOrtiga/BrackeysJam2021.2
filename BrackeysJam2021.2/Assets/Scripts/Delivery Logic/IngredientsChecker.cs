@@ -8,9 +8,10 @@ public class IngredientsChecker : MonoBehaviour
     public static OnIngredientUsedDelegate ingredientUsedDelegate;
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.GetComponent("Ingredient") as Ingredient) != null)
+        Ingredient ingredient = other.GetComponent<Ingredient>();
+        
+        if (ingredient != null)
         {
-            var ingredient = other.GetComponent("Ingredient") as Ingredient;
             ingredientUsedDelegate?.Invoke(ingredient.Name);
             Destroy(other.gameObject);
         }

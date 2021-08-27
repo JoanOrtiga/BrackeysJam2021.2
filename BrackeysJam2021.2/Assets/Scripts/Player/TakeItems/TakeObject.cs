@@ -86,7 +86,7 @@ public class TakeObject : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     isHolding = false;
-
+                    rgb.isKinematic = false;
                     rgb.AddForce(camera.transform.forward * power, ForceMode.Impulse);
 
                     StartCoroutine(AjustChangeMode()); //hacía conflicto con el modo cambiaba (antes de tiempo por lo que tirabas y cogias en 0.000001 segundos.)
@@ -110,21 +110,20 @@ public class TakeObject : MonoBehaviour
         if (!isHolding)
         {
             temporal = selected;
-            if (temporal.GetComponent<SpawnerItem>())
-            {
-                GameObject spawned = selected.GetComponent<SpawnerItem>().Spawn();
-                temporal = spawned;
 
-                UpdateTheInspector();
-            }
-            else
+            //Cacheamos el getcomponent pork es más óptimo.
+            SpawnerItem spawnerItem = temporal.GetComponent<SpawnerItem>();
+            
+            if (spawnerItem != null)
             {
-                UpdateTheInspector();
+                temporal = spawnerItem.Spawn();
             }
-            //Sin el ELSE agarra sin pulsar.
+            
+            UpdateTheInspector();
         }
     }
 
+    
     private void UpdateTheInspector()
     {
         //InspectorObject.gameObject.SetActive(true);
@@ -136,15 +135,17 @@ public class TakeObject : MonoBehaviour
 
         nameIngredient.text = temporal.GetComponent<Catchable>().Name;
         isHolding = true;
+        rgb.isKinematic = true;
     }
 
     private void ThrowObject()
     {
         // InspectorObject.gameObject.SetActive(false);
         rgb.rotation = transform.rotation;
-        rgb.MovePosition(Vector3.Lerp(rgb.position, PlayerLook.position,  speed * Time.deltaTime));
+        //rgb.MovePosition(Vector3.Lerp(rgb.position, PlayerLook.position,  speed * Time.deltaTime));
         //temporal.gameObject.SetActive(true);
-       
-        rgb.velocity = (PlayerLook.position - rgb.position) * speed *Time.deltaTime;
+
+        rgb.position = Vector3.Lerp(rgb.position, PlayerLook.position, speed * Time.deltaTime);
+        //rgb.velocity = (PlayerLook.position - rgb.position) * speed *Time.deltaTime;
     }
 }
