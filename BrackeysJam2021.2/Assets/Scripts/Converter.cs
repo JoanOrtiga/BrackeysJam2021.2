@@ -15,7 +15,6 @@ public class Converter : MonoBehaviour
     private void Awake()
     {
         conversions = new Dictionary<string, GameObject>();
-        Debug.Log(ingredients.Count + " " + convertedIngredients.Count);
         for (int i = 0; i < Mathf.Min(ingredients.Count, convertedIngredients.Count); i++)
         {
             conversions.Add(ingredients[i], convertedIngredients[i]);
