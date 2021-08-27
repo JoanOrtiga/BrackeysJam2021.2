@@ -107,10 +107,10 @@ public class OrdersManager : MonoBehaviour
         {
             usedIngredients.Add(name, 1);
         }
-        printIngredients(usedIngredients);
+        PrintIngredients(usedIngredients);
     }
 
-    private void printIngredients(Dictionary<string, int> usedIngredients)
+    private void PrintIngredients(Dictionary<string, int> usedIngredients)
     {
         string ingredients = "";
         foreach (KeyValuePair<string, int> entry in usedIngredients)

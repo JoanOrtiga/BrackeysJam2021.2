@@ -2,30 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
 
 public class ExamineObject : MonoBehaviour
 {
-    public Camera camera;
-    private Transform player;
-    private GameObject objectSelected;
-
-    private float maxDistance = 2.5f;
-
+    public Camera mainCamera;
+    
+    private GameObject _objectSelected;
+    private float _maxDistance = 2.5f;
     public delegate void ModeInspector(GameObject itemSelected);
     public static ModeInspector DelegateTakeObject;
     private void Start()
     {
-        player = GetComponent<Transform>();
-
-        Physics.IgnoreLayerCollision(9, 9);
+        //Physics.IgnoreLayerCollision(9, 9);
     }
     private void Update()
     {
-        if (ModeManager.Instance.currentMode != ModeManager.Modes.InspectorMode && Input.GetMouseButtonDown(0) && isAInterestingObject())
+        if (ModeManager.Instance.currentMode != ModeManager.Modes.InspectorMode && Input.GetMouseButtonDown(0) && IsAInterestingObject())
         {
             ModeManager.Instance.currentMode = ModeManager.Modes.InspectorMode;
             StartCoroutine(ModeManager.Instance.Switch());
-            DelegateTakeObject?.Invoke(objectSelected);
+            DelegateTakeObject?.Invoke(_objectSelected);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -33,21 +30,14 @@ public class ExamineObject : MonoBehaviour
         }
     }
 
-    private bool IsNearToCatch(Vector3 position)
-    {
-        float distance = Vector3.Distance(player.transform.position, position);
-
-        return distance < maxDistance;
-    }
-
-    private bool isAInterestingObject()
+    private bool IsAInterestingObject()
     {
         RaycastHit hit;
-        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, _maxDistance))
         {
-            if (hit.collider.tag == "Interesting" && IsNearToCatch(hit.transform.position))
+            if (hit.collider.CompareTag("Interesting"))
             {
-                objectSelected = hit.transform.gameObject;
+                _objectSelected = hit.transform.gameObject;
                 return true;
             }
         }
@@ -57,9 +47,9 @@ public class ExamineObject : MonoBehaviour
     private void IsAnInteractableObject()
     {
         RaycastHit hit;
-        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, _maxDistance))
         {
-            if (hit.collider.tag == "Interactable" && IsNearToCatch(hit.transform.position))
+            if (hit.collider.CompareTag("Interactable"))
             {
                 hit.transform.GetComponent<Interactable>().Interact();
             }
