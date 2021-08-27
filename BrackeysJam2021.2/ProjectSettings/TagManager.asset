@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interesting
+  - Ignore
+  - Impact
+  - Interactable
+  - Liquid
+  - FireParticle
   layers:
   - Default
   - TransparentFX
@@ -13,9 +18,9 @@ TagManager:
   - Water
   - UI
   - Player
-  - Ingredient
-  - 
-  - 
+  - Catchable
+  - Blur
+  - Fire
   - 
   - 
   - 

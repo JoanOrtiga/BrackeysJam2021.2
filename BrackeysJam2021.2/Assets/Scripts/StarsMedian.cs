@@ -7,11 +7,11 @@ public class StarsMedian : MonoBehaviour
 {
     private void OnEnable()
     {
-        RecipesManager.showMedianDelegate += ShowStars;
+        OrdersManager.showMedianDelegate += ShowStars;
     }
     private void OnDisable()
     {
-        RecipesManager.showMedianDelegate -= ShowStars;
+        OrdersManager.showMedianDelegate -= ShowStars;
     }
     private void ShowStars(float puntuation)
     {
