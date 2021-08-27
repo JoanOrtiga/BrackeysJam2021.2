@@ -14,22 +14,9 @@ public class SpeedTeleport : PotionEffect
     private bool apply;
     private bool runOnce = false;
 
-    private void OnEnable()
-    {
-        EffectManager.delegateEffectManager += GetApplyValue;
-    }
-
-    private void OnDisable()
-    {
-        EffectManager.delegateEffectManager -= GetApplyValue;
-    }
-    private void GetApplyValue(bool value)
-    {
-        apply=value;
-    }
     public override void ActivePotionEffect()
     {
-        apply = (bool)delegateClock?.Invoke();
+        apply = true;
     }
     private void Awake()
     {
@@ -67,9 +54,14 @@ public class SpeedTeleport : PotionEffect
             spawnerItems[i].transform.position = initialPos[random];
             random++;
 
-            if (random >= spawnerItems.Count) //pendiente de cambir
+            if (random >= spawnerItems.Count) //pendiente de cambiar
                 random = 0;
         }
     }
- 
+
+    public override void StopPotionEffect()
+    {
+        apply = false;
+    }
+
 }

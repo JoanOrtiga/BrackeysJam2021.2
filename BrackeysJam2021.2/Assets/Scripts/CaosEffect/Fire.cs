@@ -2,45 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fire : CaosEffect
+public class Fire : PotionEffect
 {
     public delegate void FireDelegate(bool boolean);
     public static FireDelegate delegateFire;
 
-   
-    public override void ActiveEffectCaos()
-    {
-        IsOnFire();
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Liquid")
-        {
-            FireOff();
-        }
+    //[SerializeField]
+    public GameObject WaterColliderGameObject;
 
-    }
-    public void IsOnFire() //FUNCIÓN PARA ACTIVAR EL FUEGO.
+    private void Start()
     {
+        
+    }
+    private void OnEnable()
+    {
+        WaterCollider.delegateWaterCollider += FireOff;
+    }
+
+    private void OnDisable()
+    {
+        WaterCollider.delegateWaterCollider -= FireOff;
+    }
+    public void IsOnFire()
+    {
+        WaterColliderGameObject.SetActive(true);
         delegateFire?.Invoke(true);
         Interactable.isInteractable = false;
     }
-
     private void FireOff()
     {
+        WaterColliderGameObject.SetActive(false);
         delegateFire?.Invoke(false);
         Interactable.isInteractable = true;
     }
-    private void Update()
+
+    public override void ActivePotionEffect()
     {
-
-
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            IsOnFire();
-            print("y");
-        }
-
+        IsOnFire();
     }
-
+    public override void StopPotionEffect()
+    {
+        FireOff();
+    }
 }

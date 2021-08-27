@@ -19,11 +19,11 @@ public abstract class Interactable : MonoBehaviour
     {
         foreach (Transform item in GetComponentsInChildren<Transform>(true))
         {
-            print(item.tag);
             if(item.tag == "FireParticle")
             {
                 item.gameObject.SetActive(boolean);
-                return;
+                print("Es aqui");
+                //return;
             }
         }
     }

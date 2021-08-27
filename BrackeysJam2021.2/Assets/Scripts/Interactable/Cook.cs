@@ -11,6 +11,6 @@ public class Cook : Interactable
     public override void Active()
     {
         GameObject potion = Instantiate(ordersManager.PotionDone(), spawnerPoint.position, Quaternion.identity);
-        potion.GetComponent<PotionEffect>().ActivePotionEffect();
+        potion.GetComponent<Potion>().SetPotionEffect();
     }
 }

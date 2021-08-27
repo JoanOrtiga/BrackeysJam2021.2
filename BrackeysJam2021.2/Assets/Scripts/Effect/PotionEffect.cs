@@ -6,6 +6,5 @@ public abstract class PotionEffect : MonoBehaviour
 {
     public abstract void ActivePotionEffect();
 
-    public delegate bool DelegateClock();
-    public static DelegateClock delegateClock;
+    public abstract void StopPotionEffect();
 }

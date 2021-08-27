@@ -8,25 +8,9 @@ public class MouseInvertEffect : PotionEffect
 
     public delegate void MouseInvertDelegate(bool valueInvert);
     public static MouseInvertDelegate DelegateMouseInvert;
-
-    private void OnEnable()
-    {
-        EffectManager.delegateEffectManager += GetApplyValue;
-    }
-
-    private void OnDisable()
-    {
-        EffectManager.delegateEffectManager -= GetApplyValue;
-    }
-
-    private void GetApplyValue(bool value)
-    {
-        apply = value;
-    }
-
     public override void ActivePotionEffect()
     {
-        apply = (bool)delegateClock?.Invoke();
+        apply = true;
         DelegateMouseInvert?.Invoke(apply);
     }
 
@@ -34,5 +18,10 @@ public class MouseInvertEffect : PotionEffect
     {
         if (!apply)
             DelegateMouseInvert?.Invoke(false);
+    }
+
+    public override void StopPotionEffect()
+    {
+        apply = false;
     }
 }

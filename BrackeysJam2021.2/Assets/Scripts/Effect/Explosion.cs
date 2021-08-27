@@ -5,21 +5,23 @@ using UnityEngine;
 public class Explosion : PotionEffect
 {
     [SerializeField]
-    private float rad = 3f;
+    private float rad = 7f;
     private float power = 7f;
     private float upForce = 2.5f;
 
+    public GameObject Caldero;
     private Vector3 explosionPos;
-
+    public override void StopPotionEffect()
+    {
+        
+    }
     public override void ActivePotionEffect()
     {
-        StartCoroutine(Detonate());
+        Detonate();
     }
-    private IEnumerator Detonate()
-    {
-        yield return new WaitForSeconds(0.25f);
-        
-        explosionPos = transform.position;
+    private void Detonate()
+    {   
+        explosionPos = Caldero.transform.position;
         Collider[] coll = Physics.OverlapSphere(explosionPos, rad);
 
         foreach (Collider c in coll)

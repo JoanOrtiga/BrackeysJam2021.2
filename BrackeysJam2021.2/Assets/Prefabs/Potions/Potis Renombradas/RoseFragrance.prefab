@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5059830085099923022}
   - component: {fileID: 5059830085099923023}
   m_Layer: 7
-  m_Name: SuperHero
+  m_Name: RoseFragrance
   m_TagString: Interesting
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,4 +209,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072dbaf7ff9beef4e937d6ac6b831697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: SuperHero
+  Name: RoseFragrance
+  nameEffect: RoseFragrance

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Strength : PotionEffect
+public class StrongEffect : PotionEffect
 {
     [SerializeField]
     private float StrongValueEffect = 15f;

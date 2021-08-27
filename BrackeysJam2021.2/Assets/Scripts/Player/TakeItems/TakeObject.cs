@@ -35,12 +35,12 @@ public class TakeObject : MonoBehaviour
     private void OnEnable()
     {
         ExamineObject.DelegateTakeObject += ShowObject;
-        StrongEffect.DelegatStrong += GetPower;
+        Strength.delegateStrong += GetPower;
     }
     private void OnDisable()
     {
         ExamineObject.DelegateTakeObject -= ShowObject;
-        StrongEffect.DelegatStrong -= GetPower;
+        Strength.delegateStrong -= GetPower;
     }
     private void Start()
     {

@@ -43,12 +43,9 @@ public class Teleport : PotionEffect
 
         }
     }
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.J))
-    //    {
-    //        TeleportSpawners();
-    //    }
-
-    //}
+    public override void StopPotionEffect()
+    {
+       
+    }
+  
 }

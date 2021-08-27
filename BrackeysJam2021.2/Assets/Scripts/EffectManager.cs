@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,40 +6,62 @@ using UnityEngine;
 public class EffectManager : MonoBehaviour
 {
     public static float timer = 0;
-    private float maxTimer = 5;
+    private float maxTimer = 30;
     private bool startEffect;
+
+    private PotionEffect currentPotionEffect;
 
     public delegate void DelegateEffectManager(bool desactive);
     public static DelegateEffectManager delegateEffectManager;
 
     private void OnEnable()
     {
-        PotionEffect.delegateClock += EffectEnter;
+        Potion.delegateSendPotion += SetPotionEffect;
     }
+
+
     private void OnDisable()
     {
-        PotionEffect.delegateClock -= EffectEnter;
+        Potion.delegateSendPotion -= SetPotionEffect;
     }
-    private bool EffectEnter()
+
+
+
+    private void SetPotionEffect(string name)
     {
-        return startEffect = true;
+        currentPotionEffect = gameObject.GetComponent(name) as PotionEffect;
+        Debug.Log(currentPotionEffect.GetType());
+
+        if (currentPotionEffect is Fire)
+        {
+            startEffect = false;
+        }
+        else
+            startEffect = true;
+
+
+        currentPotionEffect.ActivePotionEffect();
+
     }
 
     private void StartClock()
     {
+        print(timer);
         timer += Time.deltaTime;
         if (timer >= maxTimer)
         {
             startEffect = false;
             timer = 0f;
-            delegateEffectManager?.Invoke(false);
+            currentPotionEffect.StopPotionEffect();
+
         }
-        print(timer);
+        //print(timer);
     }
     private void Update()
     {
         if (startEffect)
             StartClock();
+        
     }
 
 }

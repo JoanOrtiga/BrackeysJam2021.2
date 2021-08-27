@@ -210,3 +210,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: HardExplosion
+  nameEffect: HardExplosion

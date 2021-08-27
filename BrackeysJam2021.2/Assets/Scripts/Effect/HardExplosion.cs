@@ -17,23 +17,8 @@ public class HardExplosion : PotionEffect
 
     public override void ActivePotionEffect()
     {
-        apply = (bool)delegateClock?.Invoke();
+        apply = true;
     }
-
-    private void OnEnable()
-    {
-        EffectManager.delegateEffectManager += GetApplyValue;
-    }
-
-    private void OnDisable()
-    {
-        EffectManager.delegateEffectManager -= GetApplyValue;
-    }
-    private void GetApplyValue(bool value)
-    {
-        apply = value;
-    }
-
 
     private void Update()
     {
@@ -41,6 +26,7 @@ public class HardExplosion : PotionEffect
         {
             if (Mathf.RoundToInt(EffectManager.timer) % 10 == 0 && !runOnce)
             {
+                print("bomba");
                 runOnce = true;
                 HardDetonate();
             }
@@ -50,7 +36,10 @@ public class HardExplosion : PotionEffect
             }
         }
     }
-
+    public override void StopPotionEffect()
+    {
+        apply = false;
+    }
     private void HardDetonate()
     {
         explosionPos = GameObject.FindGameObjectWithTag("Player").transform.position;
