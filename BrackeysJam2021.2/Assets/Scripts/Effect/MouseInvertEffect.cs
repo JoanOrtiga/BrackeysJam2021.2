@@ -4,32 +4,35 @@ using UnityEngine;
 
 public class MouseInvertEffect : PotionEffect
 {
-    private bool applied = false;
-    private float timer = 0;
-    private float valueTimer = 30f; //secs
+    private bool apply = false;
 
     public delegate void MouseInvertDelegate(bool valueInvert);
     public static MouseInvertDelegate DelegateMouseInvert;
+
+    private void OnEnable()
+    {
+        EffectManager.delegateEffectManager += GetApplyValue;
+    }
+
+    private void OnDisable()
+    {
+        EffectManager.delegateEffectManager -= GetApplyValue;
+    }
+
+    private void GetApplyValue(bool value)
+    {
+        apply = value;
+    }
+
     public override void ActivePotionEffect()
     {
-        applied = true;
-        DelegateMouseInvert?.Invoke(true);
+        apply = (bool)delegateClock?.Invoke();
+        DelegateMouseInvert?.Invoke(apply);
     }
 
     private void Update()
     {
-        if (applied)
-        {
-            timer += Time.deltaTime;
-            print(timer);
-            if (timer >= valueTimer)
-            {
-                DelegateMouseInvert?.Invoke(false);
-                timer = 0;
-                applied = false;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-            ActivePotionEffect();
+        if (!apply)
+            DelegateMouseInvert?.Invoke(false);
     }
 }

@@ -39,7 +39,7 @@ public class OrdersManager : MonoBehaviour
     private bool slowTime2;
     private bool slowTime3;
     private bool perfect;
-    private List<bool> mistakes => new List<bool> { incorrectIngredients, incorrectQuantities, slowTime1, slowTime2, slowTime3 , perfect };
+    private List<bool> mistakes => new List<bool> { incorrectIngredients, incorrectQuantities, slowTime1, slowTime2, slowTime3, perfect };
 
     private Dictionary<string, int> usedIngredients;
     private float timeLeft;
@@ -123,14 +123,9 @@ public class OrdersManager : MonoBehaviour
     public GameObject PotionDone()
     {
         if (!DictionaryExtensionMethods.ContentEquals(currentIngredients, usedIngredients))
-        {
             return PotionsManager.badPotion;
-        }else
-        {
-            currentPotion.GetComponent<PotionEffect>().ActivePotionEffect();
+        else
             return currentPotion;
-        }
-       
     }
 
     public void Puntuation()

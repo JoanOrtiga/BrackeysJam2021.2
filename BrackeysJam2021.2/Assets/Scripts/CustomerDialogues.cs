@@ -13,7 +13,6 @@ public class CustomerDialogues : MonoBehaviour
     private void Start()
     {
         canvas = GetComponent<CanvasGroup>();
-        print(canvas);
     }
     private void OnEnable()
     {

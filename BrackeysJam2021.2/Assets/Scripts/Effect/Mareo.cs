@@ -4,52 +4,59 @@ using UnityEngine;
 
 public class Mareo : PotionEffect
 {
-    public GameObject Distorsion;
-    //private bool IsDistorsion = false;
-    private bool applied = false;
-    private float timer = 0;
-    private float valueTimer = 30f; //secs
+    private GameObject distorsion;
+    private bool apply = false;
 
-    private void Start()
+    public delegate GameObject DistorsionDelegate();
+    public static DistorsionDelegate distorsionDelegate;
+
+    
+    public delegate void Delegatee(bool state);
+    public static Delegatee delegatee;
+    private void OnEnable()
     {
-        Distorsion.gameObject.SetActive(false);
+        EffectManager.delegateEffectManager += GetApplyValue;
+    }
+
+    private void OnDisable()
+    {
+        EffectManager.delegateEffectManager -= GetApplyValue;
+    }
+    private void GetApplyValue(bool value)
+    {
+        print("GET APPLY VALUE");
+        apply = value;
+    }
+
+    private void Awake()
+    {
+        distorsion = distorsionDelegate?.Invoke();
+        
+        distorsion.gameObject.SetActive(false);
     }
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.K)) //pruebas
-        //{
-        //    IsDistorsion = !IsDistorsion;
-        //    if (IsDistorsion)
-        //        ChangeToDistorsion();
-        //    else
-        //        ChangeToNormal();
-        //}
-
-        if (applied)
+        if (!apply)
         {
-            timer += Time.deltaTime;
-            if (timer >= valueTimer)
-            {
-                ChangeToNormal();
-                applied = false;
-                timer = 0;
-            }
+            ChangeToNormal();
         }
     }
 
     private void ChangeToDistorsion()
     {
-        Distorsion.gameObject.SetActive(true);
+        distorsion.gameObject.SetActive(true);
     }
 
     private void ChangeToNormal()
     {
-        Distorsion.gameObject.SetActive(false);
+        distorsion.gameObject.SetActive(false);
     }
 
     public override void ActivePotionEffect()
     {
+
+        apply = (bool)delegateClock?.Invoke();
+
         ChangeToDistorsion();
-        applied = true;
     }
 }

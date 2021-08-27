@@ -17,6 +17,10 @@ public class CameraController : MonoBehaviour
     private float rotationX;
 
     private static bool cursorLocked;
+
+    public GameObject DistorsionGameObject;
+
+   
     void Start()
     {
         CursorLock();
@@ -31,11 +35,18 @@ public class CameraController : MonoBehaviour
     private void OnEnable()
     {
         MouseInvertEffect.DelegateMouseInvert += GetInvert;
+        Mareo.distorsionDelegate += GetDistorsionObject;
     }
 
     private void OnDisable()
     {
         MouseInvertEffect.DelegateMouseInvert -= GetInvert;
+        Mareo.distorsionDelegate -= GetDistorsionObject;
+    }
+
+    private GameObject GetDistorsionObject()
+    {
+        return DistorsionGameObject;
     }
 
     private void GetInvert(bool invert)
