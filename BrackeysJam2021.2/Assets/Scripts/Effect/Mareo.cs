@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mareo : CaosEffect
+public class Mareo : PotionEffect
 {
     public GameObject Distorsion;
     //private bool IsDistorsion = false;
@@ -47,7 +47,7 @@ public class Mareo : CaosEffect
         Distorsion.gameObject.SetActive(false);
     }
 
-    public override void ActiveEffectCaos()
+    public override void ActivePotionEffect()
     {
         ChangeToDistorsion();
         applied = true;

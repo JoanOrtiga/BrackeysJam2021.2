@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     private float y;
 
     private float minLimit = -60f;
-    private float maxLimit = 60f;
+    private float maxLimit = 90f;
 
     private float speed = 500f;
 
@@ -23,6 +23,7 @@ public class CameraController : MonoBehaviour
     }
     void Update()
     {
+        //CursorUnlock();
         if (cursorLocked)
             CameraMovement();
     }
@@ -47,8 +48,6 @@ public class CameraController : MonoBehaviour
 
     private void CameraMovement()
     {
-
-
         x = Input.GetAxis("Mouse X") * speed * Time.deltaTime;
         y = Input.GetAxis("Mouse Y") * speed * Time.deltaTime;
 
