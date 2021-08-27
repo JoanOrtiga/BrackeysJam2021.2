@@ -23,6 +23,7 @@ public class CameraController : MonoBehaviour
     }
     void Update()
     {
+        //CursorUnlock();
         if (cursorLocked)
             CameraMovement();
     }
@@ -47,8 +48,6 @@ public class CameraController : MonoBehaviour
 
     private void CameraMovement()
     {
-
-
         x = Input.GetAxis("Mouse X") * speed * Time.deltaTime;
         y = Input.GetAxis("Mouse Y") * speed * Time.deltaTime;
 
