@@ -1674,3 +1674,9 @@ Received Import Request.
   path: Assets/Presets/Defaults/DirectionalLight_Default.preset
   artifactKey: Guid(463065d4f17d1d94d848aa127b94dd43) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
 Start importing Assets/Presets/Defaults/DirectionalLight_Default.preset using Guid(463065d4f17d1d94d848aa127b94dd43) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '35ce73bbd3655b348c994d30dd42dca0') in 0.010516 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 53.906501 seconds.
+  path: Assets/Scenes/Ainoa.unity
+  artifactKey: Guid(02c89961c49338c41aa2f94f9ddd24e0) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/Scenes/Ainoa.unity using Guid(02c89961c49338c41aa2f94f9ddd24e0) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '4e1f61ab5060435d055a8c157e810007') in 0.008088 seconds 
