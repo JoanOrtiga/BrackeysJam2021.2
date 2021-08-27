@@ -122,15 +122,18 @@ public class OrdersManager : MonoBehaviour
 
     public GameObject PotionDone()
     {
-        if (!DictionaryExtensionMethods.ContentEquals(currentIngredients, usedIngredients))
+        if (usedIngredients.Count > 0)
         {
-            return PotionsManager.badPotion;
-        }else
-        {
-            currentPotion.GetComponent<PotionEffect>().ActivePotionEffect();
-            return currentPotion;
+            if (!DictionaryExtensionMethods.ContentEquals(currentIngredients, usedIngredients))
+            {
+                return PotionsManager.badPotion;
+            } else
+            {
+                currentPotion.GetComponent<PotionEffect>().ActivePotionEffect();
+                return currentPotion;
+            }
         }
-       
+        return null;
     }
 
     public void Puntuation()

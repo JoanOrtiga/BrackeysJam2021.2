@@ -10,6 +10,10 @@ public class Cook : Interactable
     private OrdersManager ordersManager;
     public override void Active()
     {
-        Instantiate(ordersManager.PotionDone(), spawnerPoint.position, Quaternion.identity);
+        var potion = ordersManager.PotionDone();
+        if (!(potion is null))
+        {
+            Instantiate(potion, spawnerPoint.position, Quaternion.identity);
+        }
     }
 }
