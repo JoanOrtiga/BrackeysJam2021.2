@@ -21,9 +21,9 @@ public class ExamineObject : MonoBehaviour
     }
     private void Update()
     {
-        if (ModeManager.Instance.currentMode != ModeManager.modes.InspectorMode && Input.GetMouseButtonDown(0) && isAInterestingObject())
+        if (ModeManager.Instance.currentMode != ModeManager.Modes.InspectorMode && Input.GetMouseButtonDown(0) && isAInterestingObject())
         {
-            ModeManager.Instance.currentMode = ModeManager.modes.InspectorMode;
+            ModeManager.Instance.currentMode = ModeManager.Modes.InspectorMode;
             StartCoroutine(ModeManager.Instance.Switch());
             DelegateTakeObject?.Invoke(objectSelected);
         }

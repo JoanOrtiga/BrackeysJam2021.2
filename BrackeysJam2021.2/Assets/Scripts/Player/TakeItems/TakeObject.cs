@@ -54,7 +54,7 @@ public class TakeObject : MonoBehaviour
     }
     private void Update()
     {
-        if (ModeManager.Instance.currentMode == ModeManager.modes.InspectorMode)
+        if (ModeManager.Instance.currentMode == ModeManager.Modes.InspectorMode)
         {
             //if (Input.GetMouseButton(1) && isHolding)
             //{
@@ -89,7 +89,7 @@ public class TakeObject : MonoBehaviour
 
                     rgb.AddForce(camera.transform.forward * power, ForceMode.Impulse);
 
-                    StartCoroutine(AjustChangeMode()); //hacía conflicto con el modo cambiaba (antes de tiempo por lo que tirabas y cogias en 0.000001 segundos.)
+                    StartCoroutine(AjustChangeMode()); //hacÃ­a conflicto con el modo cambiaba (antes de tiempo por lo que tirabas y cogias en 0.000001 segundos.)
                 }
             }
         }
@@ -102,7 +102,7 @@ public class TakeObject : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        ModeManager.Instance.currentMode = ModeManager.modes.NormalMode;
+        ModeManager.Instance.currentMode = ModeManager.Modes.NormalMode;
         StartCoroutine(ModeManager.Instance.Switch());
     }
     private void ShowObject(GameObject selected)

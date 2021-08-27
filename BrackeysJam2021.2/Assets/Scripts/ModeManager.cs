@@ -7,13 +7,13 @@ public class ModeManager : MonoBehaviour
 {
     public static ModeManager Instance;
 
-    public enum modes
+    public enum Modes
     {
         NormalMode,
         InspectorMode
     }
 
-    public modes currentMode;
+    public Modes currentMode;
 
     private void Awake()
     {
@@ -22,13 +22,13 @@ public class ModeManager : MonoBehaviour
 
     private void Start()
     {
-        currentMode = modes.NormalMode;
+        currentMode = Modes.NormalMode;
         Cursor.visible = false;
     }
 
     private void Update()
     {
-        print(currentMode);
+        //print(currentMode);
     }
 
     public IEnumerator Switch()
@@ -37,9 +37,9 @@ public class ModeManager : MonoBehaviour
 
         switch (currentMode)
         {
-            case modes.NormalMode:
+            case Modes.NormalMode:
                 break;
-            case modes.InspectorMode:
+            case Modes.InspectorMode:
                 Inspector();
                 break;
         }
