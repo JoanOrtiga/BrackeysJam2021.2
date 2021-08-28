@@ -1572,6 +1572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3375cf1ff4a1094e93fb53296cd3bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeUntilDissapear: 0
   ordersManager: {fileID: 1906352937}
 --- !u!1 &994880435
 GameObject:
@@ -2747,7 +2748,7 @@ GameObject:
   - component: {fileID: 1984949303}
   - component: {fileID: 1984949305}
   - component: {fileID: 1984949307}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Mortero
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -3015,7 +3016,7 @@ GameObject:
   - component: {fileID: 1813174638937829619}
   - component: {fileID: 2836496668646290217}
   - component: {fileID: 7748134885019014338}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: pal_mortero001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3060,7 +3061,7 @@ GameObject:
   - component: {fileID: 8803490985961142753}
   - component: {fileID: 5475401833933050338}
   - component: {fileID: 2742081263380773958}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: mortero001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
