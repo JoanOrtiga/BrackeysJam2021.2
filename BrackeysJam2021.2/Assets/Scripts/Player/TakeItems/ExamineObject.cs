@@ -8,11 +8,16 @@ using UnityEngine.Events;
 public class ExamineObject : MonoBehaviour
 {
     public Camera mainCamera;
-    
+
     private GameObject _objectSelected;
     private float _maxDistance = 2.5f;
     public delegate void ModeInspector(GameObject itemSelected);
     public static ModeInspector DelegateTakeObject;
+
+    public delegate void ShowIndicator(string text);
+    public static ShowIndicator delegateShowIndicator;
+
+
     private void Start()
     {
         //Physics.IgnoreLayerCollision(9, 9);
@@ -25,11 +30,13 @@ public class ExamineObject : MonoBehaviour
             StartCoroutine(ModeManager.Instance.Switch());
             DelegateTakeObject?.Invoke(_objectSelected);
         }
-        
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             IsAnInteractableObject();
         }
+
+        ShowIndicatorInput();
     }
 
     private bool IsAInterestingObject()
@@ -57,4 +64,31 @@ public class ExamineObject : MonoBehaviour
             }
         }
     }
+
+
+    private void ShowIndicatorInput()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, _maxDistance))
+        {
+            if (hit.collider.CompareTag("Interactable"))
+            {
+                delegateShowIndicator?.Invoke("E");
+            }
+            else if (hit.collider.CompareTag("Interesting"))
+            {
+                delegateShowIndicator?.Invoke("LMB");
+            }
+            else 
+            {
+                delegateShowIndicator?.Invoke("");
+            }
+            //else
+            //{
+            //    delegateShowIndicator?.Invoke("");
+            //}
+        }
+    }
+
+
 }
