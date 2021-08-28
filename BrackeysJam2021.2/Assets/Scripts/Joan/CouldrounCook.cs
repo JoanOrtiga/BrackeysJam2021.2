@@ -13,10 +13,18 @@ namespace ChaosAlchemy
         
         [SerializeField] private ToolProgressUI toolProgressUI;
 
+        private GameController _gameController;
+        
         public float maxCookTime;
         private float _currentCookTime;
 
         private bool _cooking = false;
+
+        private void Awake()
+        {
+            _gameController = FindObjectOfType<GameController>();
+        }
+
         private void Update()
         {
             if(_cooking is false)
@@ -27,24 +35,31 @@ namespace ChaosAlchemy
             
             if (_currentCookTime >= maxCookTime)
             {
+                couldronIngredients.ResetCouldroun();
                 toolProgressUI.ShowStatus(false);
+                _cooking = false;
                 SpawnPotion();
             }
         }
 
         private void SpawnPotion()
         {
-            var potion = ordersManager.PotionDone();
+            var potion = _gameController.PotionDone();
             if (!(potion is null))
             {
-                Instantiate(potion, potionSpawnPoint.position, Quaternion.identity);
+                GameObject spawnerPotion = Instantiate(potion, potionSpawnPoint.position, Quaternion.identity);
+                spawnerPotion.GetComponent<PotionEffect>()?.ActivePotionEffect();
+            }
+            else
+            {
+                Debug.Log("Shouldn't be null");
             }
         }
 
 
         public void Interact()
         {
-            if (couldronIngredients.IsEmpty() is false)
+            if (couldronIngredients.IsEmpty() is false && _cooking is false)
             {
                 StartCooking();
             }

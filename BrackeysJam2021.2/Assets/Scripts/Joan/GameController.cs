@@ -105,10 +105,12 @@ namespace ChaosAlchemy
         {
             if (_currentRecipe.ingredients.Count > 0)
             {
-                return PotionsManager.badPotion;
+                return recipes.badPotion;
             }
             
-            
+            return _currentRecipe.potion;
+
+            /*
             if (usedIngredients.Count > 0)
             {
                 if (!DictionaryExtensionMethods.ContentEquals(currentIngredients, usedIngredients))
@@ -120,9 +122,8 @@ namespace ChaosAlchemy
                     return currentPotion;
                 }
             }
-            return null;
+            */
         }
-
     }
 }
 

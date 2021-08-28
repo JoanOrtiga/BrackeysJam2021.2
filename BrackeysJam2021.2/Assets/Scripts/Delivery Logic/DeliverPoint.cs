@@ -39,5 +39,4 @@ public class DeliverPoint : MonoBehaviour
         _gameController.EndPotion();
         Destroy(potion);
     }
-    
 }
