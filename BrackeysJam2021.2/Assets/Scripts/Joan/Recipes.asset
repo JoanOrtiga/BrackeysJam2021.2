@@ -13,12 +13,40 @@ MonoBehaviour:
   m_Name: Recipes
   m_EditorClassIdentifier: 
   recipes:
-  - name: Veneno
-    potion: {fileID: 989862072518779848, guid: c7647c6add44a6746baec9c23ce2c104, type: 3}
+  - name: Strength
+    potion: {fileID: 5059830085099923009, guid: 5b2d5a20aca9fcc44aa556adc1acf36a, type: 3}
     recipeTime: 30
-    ingredients: 0000000000000000
-  - name: Patata
-    potion: {fileID: 989862072518779848, guid: c7647c6add44a6746baec9c23ce2c104, type: 3}
+    ingredients: 060000000400000003000000
+  - name: Explosion
+    potion: {fileID: 5059830085099923009, guid: cb0585febd77b6045ac34497315b5529, type: 3}
     recipeTime: 30
-    ingredients: 0000000000000000
+    ingredients: 0b0000000d00000000000000
+  - name: Poison
+    potion: {fileID: 5059830085099923009, guid: 80f895bc52b871c47bf52c1731b8e7d5, type: 3}
+    recipeTime: 30
+    ingredients: 050000000a00000002000000
+  - name: Teleport
+    potion: {fileID: 5059830085099923009, guid: d2ad74c6b322d884db836578488e1fd2, type: 3}
+    recipeTime: 30
+    ingredients: 100000000b00000001000000
+  - name: Fire
+    potion: {fileID: 5059830085099923009, guid: 084a7b27a0c65e54081cef783bd2da4f, type: 3}
+    recipeTime: 30
+    ingredients: 0e0000001000000000000000
+  - name: Broken Heart
+    potion: {fileID: 5059830085099923009, guid: 8cf7efdc7da0814418f64a44583f81e5, type: 3}
+    recipeTime: 30
+    ingredients: 0c0000000f00000002000000
+  - name: Dizziness
+    potion: {fileID: 5059830085099923009, guid: c1bdecaf92e1e6f4da52a3bb3e1685c1, type: 3}
+    recipeTime: 30
+    ingredients: 0c0000000f00000002000000
+  - name: Strong Explosion
+    potion: {fileID: 5059830085099923009, guid: 8ba8d1b9d6852c84294043f2fa789719, type: 3}
+    recipeTime: 30
+    ingredients: 0c000000100000000d00000000000000
+  - name: Fast teleport
+    potion: {fileID: 5059830085099923009, guid: e34f400bf62745447ad1bae4282e9ffd, type: 3}
+    recipeTime: 30
+    ingredients: 0f0000000c00000001000000
   badPotion: {fileID: 5190515578955299048, guid: 4bc29024c68f7db4fb1c7ffdee7b6466, type: 3}

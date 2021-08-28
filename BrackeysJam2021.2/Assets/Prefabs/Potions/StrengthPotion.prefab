@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5059830085099923009, guid: 104facd185012034796d4efee2feed07, type: 3}
       propertyPath: m_Name
-      value: EyeFrogPotion
+      value: StrengthPotion
       objectReference: {fileID: 0}
     - target: {fileID: 5059830085099923022, guid: 104facd185012034796d4efee2feed07, type: 3}
       propertyPath: m_Interpolate
