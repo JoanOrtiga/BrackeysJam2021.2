@@ -25,10 +25,11 @@ namespace ChaosAlchemy
     }
     
     [Serializable]
-    public struct Recipe
+    public class Recipe
     {
         public string name;
         public GameObject potion;
+        public float recipeTime = 30f;
         public List<IngredientType> ingredients;
     }
 
