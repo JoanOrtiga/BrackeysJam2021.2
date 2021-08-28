@@ -44,6 +44,13 @@ namespace ChaosAlchemy
         PotassiumNitrate, 
         LizardEye, 
         UnicornHorn, 
-        LepiotaBrunneoincarnata
+        LepiotaBrunneoincarnata,
+        FrogPaw,
+        ChoppedFrogPaw,
+        ChoppedAlstroemeria,
+        MeltPsilocybeCubensis,
+        MeltPotassiumNitrate,
+        CutLizardEye,
+        CutLepiotaBrunneoincarnata
     }
 }
