@@ -13,12 +13,20 @@ MonoBehaviour:
   m_Name: Recipes
   m_EditorClassIdentifier: 
   recipes:
-  - name: Veneno
+  - name: Poison
     potion: {fileID: 989862072518779848, guid: c7647c6add44a6746baec9c23ce2c104, type: 3}
-    recipeTime: 30
-    ingredients: 0000000000000000
+    recipeTime: 90
+    ingredients: 
+  - name: Strength
+    potion: {fileID: 989862072518779848, guid: c7647c6add44a6746baec9c23ce2c104, type: 3}
+    recipeTime: 90
+    ingredients: 
+  - name: Explosion
+    potion: {fileID: 989862072518779848, guid: c7647c6add44a6746baec9c23ce2c104, type: 3}
+    recipeTime: 90
+    ingredients: 00000000
   - name: Patata
     potion: {fileID: 989862072518779848, guid: c7647c6add44a6746baec9c23ce2c104, type: 3}
-    recipeTime: 30
-    ingredients: 0000000000000000
+    recipeTime: 90
+    ingredients: 00000000
   badPotion: {fileID: 5190515578955299048, guid: 4bc29024c68f7db4fb1c7ffdee7b6466, type: 3}
