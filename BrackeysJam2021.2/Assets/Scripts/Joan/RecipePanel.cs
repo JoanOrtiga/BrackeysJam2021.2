@@ -18,6 +18,7 @@ namespace ChaosAlchemy
 
         public IEnumerator NewRecipe(string CustomerName, string PotionName, List<IngredientType> ingredients)
         {
+            
             potionName.text = String.Empty;
             recipeIngredients.text = String.Empty;
             

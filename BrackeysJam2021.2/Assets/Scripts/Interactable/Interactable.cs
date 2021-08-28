@@ -14,7 +14,9 @@ public abstract class Interactable : MonoBehaviour
     {
         Fire.delegateFire += SetFire;
     }
-
+    
+    
+    
     private void SetFire(bool boolean)
     {
         foreach (Transform item in GetComponentsInChildren<Transform>(true))

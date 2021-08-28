@@ -11,6 +11,8 @@ namespace ChaosAlchemy
     {
         public List<Recipe> recipes = new List<Recipe>();
 
+        public GameObject badPotion;
+
         public Recipe GetRandomRecipe()
         {
             return recipes[Random.Range(0, recipes.Count)];
@@ -26,6 +28,7 @@ namespace ChaosAlchemy
     public struct Recipe
     {
         public string name;
+        public GameObject potion;
         public List<IngredientType> ingredients;
     }
 

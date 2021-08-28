@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipes:
   - name: Veneno
-    ingredients: 0000000001000000
+    potion: {fileID: 989862072518779848, guid: c7647c6add44a6746baec9c23ce2c104, type: 3}
+    ingredients: 00000000
+  badPotion: {fileID: 5190515578955299048, guid: 4bc29024c68f7db4fb1c7ffdee7b6466, type: 3}

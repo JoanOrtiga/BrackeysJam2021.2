@@ -55,6 +55,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EyePotion
       objectReference: {fileID: 0}
+    - target: {fileID: 5059830085099923022, guid: 104facd185012034796d4efee2feed07, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059830085099923022, guid: 104facd185012034796d4efee2feed07, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5059830085099923023, guid: 104facd185012034796d4efee2feed07, type: 3}
       propertyPath: Name
       value: EyePotion
