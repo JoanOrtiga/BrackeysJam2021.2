@@ -30,6 +30,9 @@ namespace ChaosAlchemy
         private PlayerHUD _playerHUD;
 
         private List<float> _allScores = new List<float>();
+
+
+        private bool starQuarterTime = false;
         
         private void Awake()
         {
@@ -49,10 +52,17 @@ namespace ChaosAlchemy
             if (_currentRecipeTime <= 0)
             {
                 UpdateScore(0.0f);
-                EndPotion();
+                EndRecipe();
+            }
+
+            if (!starQuarterTime && _currentRecipeTime <= _currentRecipeTime / 4)
+            {
+                starQuarterTime = true;
+                UpdateScore(_currentScore - 1.0f);
             }
         }
 
+        //Add ingredients to the recipe (in cauldron)
         public void UpdateCurrentRecipe(IngredientType ingredient)
         {
             for (int i = 0; i < _currentRecipe.ingredients.Count; i++)
@@ -65,15 +75,19 @@ namespace ChaosAlchemy
             }
 
             _recipeErrors++;
+            if (_recipeErrors >= _currentRecipe.ingredients.Count/2)
+            {
+                UpdateScore(_currentScore - 1.0f);
+            }
         }
         
         public void UpdateScore(float score)
         {
             _currentScore = score;
-            //ShowScore
+            //ShowScore on sigui
         }
         
-        public void EndPotion()
+        public void EndRecipe()
         {
             _allScores.Add(_currentScore);
             _playerHUD.StarsAverage(_allScores);
@@ -87,8 +101,10 @@ namespace ChaosAlchemy
             _currentScore = maxScore;
             _currentRecipeTime = maxRecipeTime;
             _currentCustomerName = customerNames.GetRandomCustomerName();
+            _recipePanel.StopAllCoroutines();
             _recipePanel.StartCoroutine(_recipePanel.NewRecipe(_currentCustomerName, _currentRecipe.name, _currentRecipe.ingredients));
             _recipeErrors = 0;
+            starQuarterTime = false;
         }
 
         public void GetNewRecipe()
@@ -97,8 +113,35 @@ namespace ChaosAlchemy
             _currentRecipeTime = maxRecipeTime;
             _currentScore = maxScore;
             _currentCustomerName = customerNames.GetRandomCustomerName();
+            _recipePanel.StopAllCoroutines();
             _recipePanel.StartCoroutine(_recipePanel.NewRecipe(_currentCustomerName, _currentRecipe.name, _currentRecipe.ingredients));
             _recipeErrors = 0;
+            starQuarterTime = false;
+        }
+        
+        //GetPotionType from cauldron.
+        public GameObject PotionDone()
+        {
+            if (_currentRecipe.ingredients.Count > 0)
+            {
+                return recipes.badPotion;
+            }
+            
+            return _currentRecipe.potion;
+
+            /*
+            if (usedIngredients.Count > 0)
+            {
+                if (!DictionaryExtensionMethods.ContentEquals(currentIngredients, usedIngredients))
+                {
+                    return PotionsManager.badPotion;
+                } else
+                {
+                    currentPotion.GetComponent<PotionEffect>().ActivePotionEffect();
+                    return currentPotion;
+                }
+            }
+            */
         }
     }
 }

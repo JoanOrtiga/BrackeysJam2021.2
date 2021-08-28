@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,6 @@ public enum soundType
     music,
     global
 }
-
 public class MusicManager : MonoBehaviour
 {
     public AudioMixer mixer;
@@ -17,12 +17,37 @@ public class MusicManager : MonoBehaviour
     public AudioMixerGroup sfxMixer;
 
     public AudioClip[] musicClips;
+    public AudioSource cookSource;
 
     private AudioSource music;
     private AudioLowPassFilter passFilter;
 
     public float sfxVolume = 0.5f, musicVolume = 0.5f, globalVolume = 0.5f; //This is needed to initialitzate the value of the sliders
     private int currentMusic = 1;
+    private float startVolume;
+    private void OnEnable()
+    {
+        OrdersManager.orderStartDelegate += StartBattle;
+        Cook.CookStart += OnCookStart;
+    }
+    private void OnDisable()
+    {
+        OrdersManager.orderStartDelegate -= StartBattle;
+        Cook.CookStart -= OnCookStart;
+    }
+
+    private void StartBattle(IRecipe recipe, ICustomer customer)
+    {
+        currentMusic = (currentMusic % (musicClips.Length - 1)) + 1;
+        music.clip = musicClips[currentMusic];
+        music.Play();
+        music.volume = startVolume;
+    }
+    private void OnCookStart()
+    {
+        FadeAudioSource.StartFade(music, 1, 0);
+        cookSource.Play();
+    }
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -32,6 +57,7 @@ public class MusicManager : MonoBehaviour
         ChangeVolume(globalVolume, soundType.global);
 
         passFilter = GetComponent<AudioLowPassFilter>();
+        startVolume = music.volume;
     }
     private void Start()
     {
@@ -94,11 +120,5 @@ public class MusicManager : MonoBehaviour
             music.clip = musicClips[1];
             music.Play();
         }
-    }
-    public void StartBattle()
-    {
-        currentMusic = (currentMusic % (musicClips.Length - 1))+1 ;
-        music.clip = musicClips[currentMusic];
-        music.Play();
     }
 }
