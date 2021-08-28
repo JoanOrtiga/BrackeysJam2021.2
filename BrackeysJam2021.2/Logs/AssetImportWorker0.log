@@ -831,3 +831,4 @@ Received Import Request.
   path: Assets/Scenes/Ainoa/TestingJoan 1.unity
   artifactKey: Guid(a8fef39cf09d14f4697a7eeabe547e87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scenes/Ainoa/TestingJoan 1.unity using Guid(a8fef39cf09d14f4697a7eeabe547e87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3faef96c40011c45328e493cb8172592') in 0.010559 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
