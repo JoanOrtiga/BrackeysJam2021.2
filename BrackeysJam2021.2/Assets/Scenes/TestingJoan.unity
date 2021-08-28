@@ -549,7 +549,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176102822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.49, y: 0.69, z: -5.28}
+  m_LocalPosition: {x: 1.49, y: 0.14, z: -5.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1260737859}
@@ -1971,8 +1971,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1260737859}
-  - component: {fileID: 1260737861}
   - component: {fileID: 1260737860}
+  - component: {fileID: 1260737861}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -2016,10 +2016,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1260737858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3375cf1ff4a1094e93fb53296cd3bcf, type: 3}
+  m_Script: {fileID: 11500000, guid: 507914f4182e5ca4caeb1dc559416659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUntilDissapear: 1
 --- !u!1001 &1324947085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3837,6 +3836,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 663111831, guid: 57342db280b7d064daa1f10758cce9ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.121
+      objectReference: {fileID: 0}
+    - target: {fileID: 663111831, guid: 57342db280b7d064daa1f10758cce9ee, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.164
+      objectReference: {fileID: 0}
     - target: {fileID: 5426797485317902336, guid: 57342db280b7d064daa1f10758cce9ee, type: 3}
       propertyPath: m_Name
       value: Caldero

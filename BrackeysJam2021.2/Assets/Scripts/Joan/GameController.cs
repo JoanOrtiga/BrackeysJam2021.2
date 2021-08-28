@@ -30,6 +30,9 @@ namespace ChaosAlchemy
         private PlayerHUD _playerHUD;
 
         private List<float> _allScores = new List<float>();
+
+
+        private bool starQuarterTime = false;
         
         private void Awake()
         {
@@ -51,6 +54,12 @@ namespace ChaosAlchemy
                 UpdateScore(0.0f);
                 EndPotion();
             }
+
+            if (!starQuarterTime && _currentRecipeTime <= _currentRecipeTime / 4)
+            {
+                starQuarterTime = true;
+                UpdateScore(_currentScore - 1.0f);
+            }
         }
 
         public void UpdateCurrentRecipe(IngredientType ingredient)
@@ -65,12 +74,16 @@ namespace ChaosAlchemy
             }
 
             _recipeErrors++;
+            if (_recipeErrors >= _currentRecipe.ingredients.Count/2)
+            {
+                UpdateScore(_currentScore - 1.0f);
+            }
         }
         
         public void UpdateScore(float score)
         {
             _currentScore = score;
-            //ShowScore
+            //ShowScore on sigui
         }
         
         public void EndPotion()
@@ -87,8 +100,10 @@ namespace ChaosAlchemy
             _currentScore = maxScore;
             _currentRecipeTime = maxRecipeTime;
             _currentCustomerName = customerNames.GetRandomCustomerName();
+            _recipePanel.StopAllCoroutines();
             _recipePanel.StartCoroutine(_recipePanel.NewRecipe(_currentCustomerName, _currentRecipe.name, _currentRecipe.ingredients));
             _recipeErrors = 0;
+            starQuarterTime = false;
         }
 
         public void GetNewRecipe()
@@ -97,8 +112,10 @@ namespace ChaosAlchemy
             _currentRecipeTime = maxRecipeTime;
             _currentScore = maxScore;
             _currentCustomerName = customerNames.GetRandomCustomerName();
+            _recipePanel.StopAllCoroutines();
             _recipePanel.StartCoroutine(_recipePanel.NewRecipe(_currentCustomerName, _currentRecipe.name, _currentRecipe.ingredients));
             _recipeErrors = 0;
+            starQuarterTime = false;
         }
         
         public GameObject PotionDone()

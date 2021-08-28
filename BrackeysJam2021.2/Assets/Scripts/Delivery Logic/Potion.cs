@@ -14,4 +14,9 @@ public class Potion : Catchable
     {
         delegateSendPotion?.Invoke(nameEffect);
     }
+    
+    public override string GetName()
+    {
+        return nameEffect;
+    }
 }
