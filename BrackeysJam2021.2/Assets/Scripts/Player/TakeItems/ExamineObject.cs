@@ -17,7 +17,7 @@ public class ExamineObject : MonoBehaviour
     public delegate void ShowIndicator(string text);
     public static ShowIndicator delegateShowIndicator;
 
-
+    private string tag="";
     private void Start()
     {
         //Physics.IgnoreLayerCollision(9, 9);
@@ -36,7 +36,7 @@ public class ExamineObject : MonoBehaviour
             IsAnInteractableObject();
         }
 
-        ShowIndicatorInput();
+        ShowIndicatorText();
     }
 
     private bool IsAInterestingObject()
@@ -65,30 +65,30 @@ public class ExamineObject : MonoBehaviour
         }
     }
 
-
-    private void ShowIndicatorInput()
+    private void ShowIndicatorText()
     {
         RaycastHit hit;
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, _maxDistance))
         {
-            if (hit.collider.CompareTag("Interactable"))
+            if (hit.collider.CompareTag("Interactable") && tag != "Interactable")
             {
+                tag = "Interactable";
                 delegateShowIndicator?.Invoke("E");
             }
-            else if (hit.collider.CompareTag("Interesting"))
+            else if (hit.collider.CompareTag("Interesting") && tag != "Interesting")
             {
+                tag = "Interesting";
                 delegateShowIndicator?.Invoke("LMB");
             }
-            else 
+            else if(hit.collider.CompareTag("Untagged"))
             {
-                delegateShowIndicator?.Invoke("");
-            }
-            //else
-            //{
-            //    delegateShowIndicator?.Invoke("");
-            //}
+                tag = "";
+                delegateShowIndicator?.Invoke("");            }
+        }
+        else
+        {
+            tag = "";
+            delegateShowIndicator?.Invoke("");
         }
     }
-
-
 }

@@ -11,6 +11,7 @@ public class UIIndicator : MonoBehaviour
     private void Start()
     {
         indicator = GetComponent<TMP_Text>();
+        indicator.text = "";
     }
     private void OnEnable()
     {
