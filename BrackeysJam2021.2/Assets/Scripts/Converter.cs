@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ChaosAlchemy;
 
 public class Converter : MonoBehaviour
 {
     [Header("Conversion Dictionary")]
     [SerializeField]
-    private List<string> ingredients;
+    private List<IngredientType> ingredients;
     [SerializeField]
     private List<GameObject> convertedIngredients;
 
-    private Dictionary<string, GameObject> conversions;
+    private Dictionary<IngredientType, GameObject> conversions;
 
     private void Awake()
     {
-        conversions = new Dictionary<string, GameObject>();
+        conversions = new Dictionary<IngredientType, GameObject>();
         for (int i = 0; i < Mathf.Min(ingredients.Count, convertedIngredients.Count); i++)
         {
             conversions.Add(ingredients[i], convertedIngredients[i]);
@@ -23,9 +24,9 @@ public class Converter : MonoBehaviour
 
     public void CovertIngredient(Ingredient ingredient)
     {
-        foreach (KeyValuePair<string, GameObject> entry in conversions)
+        foreach (KeyValuePair<IngredientType, GameObject> entry in conversions)
         {
-            if (string.Equals(entry.Key, ingredient.GetName()))
+            if (string.Equals(entry.Key, ingredient._ingredientType))
             {
                 Instantiate(entry.Value, ingredient.transform.position, Quaternion.identity);
                 Destroy(ingredient.gameObject);

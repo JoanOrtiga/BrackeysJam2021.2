@@ -60,7 +60,7 @@ public class RatingPanel : MonoBehaviour
     {
         _canvasGroup.interactable = true;
         _canvasGroup.alpha = 1.0f;
-        _canvasGroup.blocksRaycasts = true;
+        _canvasGroup.blocksRaycasts = true; 
         PlayerController.CursorUnlock();
         Time.timeScale = 0f;
         shown = true;
