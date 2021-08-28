@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ChaosAlchemy;
 
-public class Mortero : Interactable
+public class Mortero : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private int clickTimes = 3;
@@ -24,12 +25,12 @@ public class Mortero : Interactable
     private Ingredient ingredient;
     private int timesCounter;
     private bool picando;
-    public override void Active()
+    public void Interact()
     {
         picando = true;
         movementUp = false;
         movementDown = true;
-        CameraController.CameraFix(false);
+        CameraController.CameraFix(true);
     }
 
     private void Start()
@@ -52,7 +53,7 @@ public class Mortero : Interactable
             {
                 if (!(ingredient is null))
                     converter.CovertIngredient(ingredient);
-                CameraController.CameraFix(true);
+                CameraController.CameraFix(false);
                 picando = false;
                 timesCounter = 0;
             }
