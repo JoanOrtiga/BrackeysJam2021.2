@@ -6,24 +6,18 @@ using UnityEngine;
 public class RatingPanel : MonoBehaviour
 {
     [SerializeField]
-    private GameObject customerRating;
-    [SerializeField]
-    private Transform verticalLayer;
+    private CustomerRating customerRating;
 
     [Header("Ratings explanation")]
     [SerializeField]
     private string incorrectIngredients;
     [SerializeField]
-    private string incorrectQuantities;
+    private string slow;
     [SerializeField]
-    private string slowTime1;
-    [SerializeField]
-    private string slowTime2;
-    [SerializeField]
-    private string slowTime3;
+    private string noTime;
     [SerializeField]
     private string perfect;
-    private List<string> messages => new List<string> { incorrectIngredients, incorrectQuantities, slowTime1, slowTime2, slowTime3, perfect };
+    private List<string> messages => new List<string> { incorrectIngredients, slow, noTime, perfect };
 
     
     private CanvasGroup _canvasGroup;
@@ -67,8 +61,7 @@ public class RatingPanel : MonoBehaviour
     public void ShowExplanation(List<bool> mistakes, float stars, string customer)
     {
         var explanation = ExplanationGeneration(mistakes);
-        var temp = Instantiate(customerRating, verticalLayer);
-        temp.GetComponent<CustomerRating>().Generate(explanation, stars, customer);
+        customerRating.Generate(explanation, stars, customer);
         ShowPanel();
     }
     private string ExplanationGeneration(List<bool> mistakes)
@@ -78,7 +71,9 @@ public class RatingPanel : MonoBehaviour
         for (int i = 0; i < mistakes.Count; i++)
         {
             if (mistakes[i])
+            {
                 explanation += messages[i];
+            }
         }
         return explanation;
     }
