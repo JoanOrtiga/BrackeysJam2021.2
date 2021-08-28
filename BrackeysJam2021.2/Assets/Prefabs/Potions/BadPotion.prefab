@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5059830085099923023, guid: 104facd185012034796d4efee2feed07, type: 3}
       propertyPath: nameEffect
-      value: RoseFragrance
+      value: Fire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 104facd185012034796d4efee2feed07, type: 3}
