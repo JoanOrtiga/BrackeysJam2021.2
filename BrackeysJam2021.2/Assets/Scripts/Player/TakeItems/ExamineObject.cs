@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using ChaosAlchemy;
 using UnityEngine.Events;
 
 public class ExamineObject : MonoBehaviour
@@ -24,6 +25,7 @@ public class ExamineObject : MonoBehaviour
             StartCoroutine(ModeManager.Instance.Switch());
             DelegateTakeObject?.Invoke(_objectSelected);
         }
+        
         if (Input.GetKeyDown(KeyCode.E))
         {
             IsAnInteractableObject();
@@ -51,7 +53,7 @@ public class ExamineObject : MonoBehaviour
         {
             if (hit.collider.CompareTag("Interactable"))
             {
-                hit.transform.GetComponent<Interactable>().Interact();
+                hit.transform.GetComponent<IInteractable>().Interact();
             }
         }
     }

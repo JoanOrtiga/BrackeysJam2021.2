@@ -26,7 +26,7 @@ public class PotionsManager : MonoBehaviour
     {
         foreach (GameObject potion in potionsList)
         {
-            if (string.Equals(potion.GetComponent<Potion>().Name, potionName))
+            if (string.Equals(potion.GetComponent<Potion>().GetName(), potionName))
                 return potion;
         }
         return null;

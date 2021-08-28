@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,17 @@ public class RatingPanel : MonoBehaviour
     private string perfect;
     private List<string> messages => new List<string> { incorrectIngredients, incorrectQuantities, slowTime1, slowTime2, slowTime3, perfect };
 
+    
+    private CanvasGroup _canvasGroup;
+    
+    
+    private bool shown = false;
+
+    private void Awake()
+    {
+        _canvasGroup = GetComponent<CanvasGroup>();
+    }
+
     private void OnEnable()
     {
         OrdersManager.showExplanationDelegate += ShowExplanation;
@@ -35,34 +47,41 @@ public class RatingPanel : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            ShowPanel();
+            if(shown is false)
+                ShowPanel();
+            else
+                HidePanel();
         }
     }
 
     public void ShowPanel()
     {
-        GetComponent<Canvas>().enabled = true;
-        GetComponent<CanvasGroup>().interactable = true;
-        CameraController.CursorUnlock();
+        _canvasGroup.interactable = true;
+        _canvasGroup.alpha = 1.0f;
+        _canvasGroup.blocksRaycasts = true;
+        PlayerController.CursorUnlock();
         Time.timeScale = 0f;
+        shown = true;
     }
     public void HidePanel()
     {
-        GetComponent<Canvas>().enabled = false;
-        GetComponent<CanvasGroup>().interactable = false;
+        _canvasGroup.interactable = false;
+        _canvasGroup.alpha = 0.0f;
+        _canvasGroup.blocksRaycasts = false;
         Time.timeScale = 1f;
-        CameraController.CursorLock();
+        PlayerController.CursorLock();
+        shown = false;
     }
 
-    private void ShowExplanation(List<bool> mistakes, float stars, string customer)
+    public void ShowExplanation(List<bool> mistakes, float stars, string customer)
     {
-        var explanation = explanationGeneration(mistakes);
+        var explanation = ExplanationGeneration(mistakes);
         var temp = Instantiate(customerRating, verticalLayer);
         temp.GetComponent<CustomerRating>().Generate(explanation, stars, customer);
     }
-    private string explanationGeneration(List<bool> mistakes)
+    private string ExplanationGeneration(List<bool> mistakes)
     {
         var explanation = "";
 

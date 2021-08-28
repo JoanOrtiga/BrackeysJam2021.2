@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,13 +25,18 @@ public class TakeObject : MonoBehaviour
 
     private Rigidbody rgb;
 
-    //show name
-    public TMP_Text nameIngredient;
-
     //effect potion
     [SerializeField]
     private float power = 1f;
     public Camera camera;
+
+    private PlayerHUD _playerHUD;
+
+    private void Awake()
+    {
+        _playerHUD = FindObjectOfType<PlayerHUD>();
+        _playerHUD.UpdateObjectOnHand("");
+    }
 
     private void OnEnable()
     {
@@ -42,11 +48,11 @@ public class TakeObject : MonoBehaviour
         ExamineObject.DelegateTakeObject -= ShowObject;
         Strength.delegateStrong -= GetPower;
     }
+    
     private void Start()
     {
         //InspectorObject.gameObject.SetActive(false);
         player = GetComponent<Transform>();
-        nameIngredient.text = "";
     }
     private void GetPower(float temporalValue)
     {
@@ -98,7 +104,7 @@ public class TakeObject : MonoBehaviour
 
     private IEnumerator AjustChangeMode()
     {
-        nameIngredient.text = "";
+        _playerHUD.UpdateObjectOnHand("");
 
         yield return new WaitForSeconds(0.5f);
 
@@ -133,7 +139,7 @@ public class TakeObject : MonoBehaviour
         rgb = temporal.GetComponent<Rigidbody>();
         //temporal.transform.position = InspectorObject.transform.position;
 
-        nameIngredient.text = temporal.GetComponent<Catchable>().Name;
+        _playerHUD.UpdateObjectOnHand(temporal.GetComponent<Catchable>().GetName());
         isHolding = true;
         rgb.isKinematic = true;
     }

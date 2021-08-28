@@ -23,20 +23,24 @@ public class PlayerController : MonoBehaviour
     Vector2 _currentMouseDelta = Vector2.zero;
     Vector2 _currentMouseDeltaVelocity = Vector2.zero;
 
+    public static bool cursorLocked = true;
+
     void Start()
     {
         _controller = GetComponent<CharacterController>();
-        if(lockCursor)
+        if(cursorLocked)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+           CursorLock();
         }
     }
 
     void Update()
     {
-        UpdateMouseLook();
-        UpdateMovement();
+        if (!(Time.timeScale <= 0.01f))
+        {
+            UpdateMouseLook();
+            UpdateMovement();
+        }
     }
 
     void UpdateMouseLook()
@@ -67,6 +71,21 @@ public class PlayerController : MonoBehaviour
         Vector3 velocity = (transform.forward * _currentDir.y + transform.right * _currentDir.x) * walkSpeed + Vector3.up * _velocityY;
 
         _controller.Move(velocity * Time.deltaTime);
+    }
+    
+    public static void CursorUnlock()
+    {
+        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        cursorLocked = false;
+    }
+    public static void CursorLock()
+    {
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        cursorLocked = true;
     }
     
     /*

@@ -25,7 +25,7 @@ public class Converter : MonoBehaviour
     {
         foreach (KeyValuePair<string, GameObject> entry in conversions)
         {
-            if (string.Equals(entry.Key, ingredient.Name))
+            if (string.Equals(entry.Key, ingredient.GetName()))
             {
                 Instantiate(entry.Value, ingredient.transform.position, Quaternion.identity);
                 Destroy(ingredient.gameObject);

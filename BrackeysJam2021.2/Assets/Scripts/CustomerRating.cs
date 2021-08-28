@@ -21,7 +21,7 @@ public class CustomerRating : MonoBehaviour
         Debug.Log("explanation");
     }
 
-    private void ShowStars (float puntuation)
+    public void ShowStars (float puntuation)
     {
         foreach(Image star in stars.GetComponentsInChildren<Image>())
         {

@@ -12,8 +12,9 @@ public class IngredientsChecker : MonoBehaviour
         
         if (ingredient != null)
         {
-            ingredientUsedDelegate?.Invoke(ingredient.Name);
+            ingredientUsedDelegate?.Invoke(ingredient.GetName());
             Destroy(other.gameObject);
         }
     }
 }
+

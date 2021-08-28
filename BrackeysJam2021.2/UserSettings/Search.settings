@@ -7,9 +7,12 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.785D90A9" = "player"
+	"last_search.785D90A9" = "recipes"
 	"InspectorPreview.785D90A9" = "0"
 	"currentGroup.785D90A9" = "all"
+	"last_search.83F126EB" = "point"
+	"InspectorPreview.83F126EB" = "0"
+	"currentGroup.83F126EB" = "asset"
 }
 providers = {
 	asset = {
@@ -49,6 +52,9 @@ providers = {
 	}
 }
 recentSearches = [
+	"recipes"
+	"player"
+	"transl"
 	"liquid"
 	"l1iquid"
 	"Liquid"

@@ -5,5 +5,10 @@ using UnityEngine;
 
 public class Catchable : MonoBehaviour
 {
-    public string Name;
+    //public string Name;
+
+    public virtual string GetName()
+    {
+        return "Catcheable";
+    }
 }
