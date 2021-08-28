@@ -25,28 +25,13 @@ public class MusicManager : MonoBehaviour
     public float sfxVolume = 0.5f, musicVolume = 0.5f, globalVolume = 0.5f; //This is needed to initialitzate the value of the sliders
     private int currentMusic = 1;
     private float startVolume;
-    private void OnEnable()
-    {
-        OrdersManager.orderStartDelegate += StartBattle;
-        Cook.CookStart += OnCookStart;
-    }
-    private void OnDisable()
-    {
-        OrdersManager.orderStartDelegate -= StartBattle;
-        Cook.CookStart -= OnCookStart;
-    }
 
-    private void StartBattle(IRecipe recipe, ICustomer customer)
+    public void ChangeMusic()
     {
         currentMusic = (currentMusic % (musicClips.Length - 1)) + 1;
         music.clip = musicClips[currentMusic];
         music.Play();
         music.volume = startVolume;
-    }
-    private void OnCookStart()
-    {
-        FadeAudioSource.StartFade(music, 1, 0);
-        cookSource.Play();
     }
     private void Awake()
     {
