@@ -17,6 +17,8 @@ public class Cook : Interactable
     public delegate void StartCook();
     public static StartCook CookStart;
 
+    public delegate void EndCook(string fx);
+    public static EndCook CookEnd;
     public override void Active()
     {
         currentCooldown = cooldown;
@@ -40,6 +42,7 @@ public class Cook : Interactable
                     activate = false;
 
                     Instantiate(potion, spawnerPoint.position, Quaternion.identity);
+                    CookEnd?.Invoke(potion.GetComponent<Potion>().nameEffect);
                 }
             }
             else
