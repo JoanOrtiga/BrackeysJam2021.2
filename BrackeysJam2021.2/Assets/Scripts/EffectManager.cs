@@ -19,14 +19,11 @@ public class EffectManager : MonoBehaviour
         Potion.delegateSendPotion += SetPotionEffect;
     }
 
-
     private void OnDisable()
     {
         Potion.delegateSendPotion -= SetPotionEffect;
     }
-
-
-
+    
     private void SetPotionEffect(string name)
     {
         currentPotionEffect = gameObject.GetComponent(name) as PotionEffect;

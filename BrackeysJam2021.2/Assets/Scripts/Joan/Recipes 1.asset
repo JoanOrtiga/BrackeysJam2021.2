@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 093ea01af997b924aaf1a19efac94879, type: 3}
-  m_Name: Recipes
+  m_Name: Recipes 1
   m_EditorClassIdentifier: 
   recipes:
-  - name: Veneno
-    ingredients: 0000000000000000
+  - name: 
+    ingredients: 

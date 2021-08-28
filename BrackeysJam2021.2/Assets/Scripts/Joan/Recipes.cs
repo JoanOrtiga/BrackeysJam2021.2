@@ -26,6 +26,7 @@ namespace ChaosAlchemy
     public struct Recipe
     {
         public string name;
+        public GameObject potion;
         public List<IngredientType> ingredients;
     }
 

@@ -100,6 +100,29 @@ namespace ChaosAlchemy
             _recipePanel.StartCoroutine(_recipePanel.NewRecipe(_currentCustomerName, _currentRecipe.name, _currentRecipe.ingredients));
             _recipeErrors = 0;
         }
+        
+        public GameObject PotionDone()
+        {
+            if (_currentRecipe.ingredients.Count > 0)
+            {
+                return PotionsManager.badPotion;
+            }
+            
+            
+            if (usedIngredients.Count > 0)
+            {
+                if (!DictionaryExtensionMethods.ContentEquals(currentIngredients, usedIngredients))
+                {
+                    return PotionsManager.badPotion;
+                } else
+                {
+                    currentPotion.GetComponent<PotionEffect>().ActivePotionEffect();
+                    return currentPotion;
+                }
+            }
+            return null;
+        }
+
     }
 }
 

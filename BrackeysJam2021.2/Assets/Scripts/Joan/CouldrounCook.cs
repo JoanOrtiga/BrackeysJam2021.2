@@ -34,7 +34,11 @@ namespace ChaosAlchemy
 
         private void SpawnPotion()
         {
-            //Instantiate(potion, potionSpawnPoint.transform);
+            var potion = ordersManager.PotionDone();
+            if (!(potion is null))
+            {
+                Instantiate(potion, potionSpawnPoint.position, Quaternion.identity);
+            }
         }
 
 
