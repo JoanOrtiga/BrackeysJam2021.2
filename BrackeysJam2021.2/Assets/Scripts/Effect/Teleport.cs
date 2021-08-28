@@ -5,15 +5,19 @@ using System.Linq;
 
 public class Teleport : PotionEffect
 {
-    
+    [SerializeField]
     private List<SpawnerItem> spawnerItems;
     [SerializeField]
     private Vector3[] initialPos;
 
     private int random;
 
+    public ParticleSystem Particles;
+
     public override void ActivePotionEffect()
     {
+        Particles.gameObject.SetActive(true);
+        Particles.Play();
         TeleportSpawners();
     }
 
@@ -23,9 +27,8 @@ public class Teleport : PotionEffect
         initialPos = new Vector3[spawnerItems.Count];        
     }
 
-    private void TeleportSpawners() //FUNCIÓN PARA ACTIVAR
+    private void TeleportSpawners()
     {
-
         for (int i = 0; i < spawnerItems.Count; i++)
         {
             initialPos[i] = spawnerItems[i].transform.position;
@@ -38,14 +41,14 @@ public class Teleport : PotionEffect
             spawnerItems[i].transform.position = initialPos[random];
             random++;
 
-            if (random >= spawnerItems.Count) //pendiente de cambir
+            if (random >= spawnerItems.Count)
                 random = 0;
 
         }
     }
+
     public override void StopPotionEffect()
     {
-       
+        Particles.gameObject.SetActive(false);
     }
-  
 }

@@ -7,6 +7,7 @@ public class Distorsion : PotionEffect
     public GameObject distorsion;
     private bool apply = false;
 
+    public ParticleSystem Particles;
     private void Awake()
     {
         distorsion.gameObject.SetActive(false);
@@ -32,11 +33,13 @@ public class Distorsion : PotionEffect
     public override void ActivePotionEffect()
     {
         apply = true;
-
+        Particles.gameObject.SetActive(true);
+        Particles.Play();
         ChangeToDistorsion();
     }
     public override void StopPotionEffect()
     {
+        Particles.gameObject.SetActive(false);
         apply = false;
     }
 }

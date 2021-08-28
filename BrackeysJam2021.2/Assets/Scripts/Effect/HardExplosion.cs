@@ -14,10 +14,26 @@ public class HardExplosion : PotionEffect
     private bool apply = false;
     private bool runOnce = false;
 
+    public ParticleSystem Particles;
+    private int once = 0;
 
+
+    private void StartOnceEffect()
+    {
+
+        if (once < 1)
+        {
+            Particles.gameObject.SetActive(true);
+            once++;
+            Particles.Play();
+        }
+          
+    }
     public override void ActivePotionEffect()
     {
-        apply = true;
+        
+        StartOnceEffect();
+         apply = true;
     }
 
     private void Update()
@@ -39,6 +55,8 @@ public class HardExplosion : PotionEffect
     public override void StopPotionEffect()
     {
         apply = false;
+        Particles.gameObject.SetActive(false);
+        once = 0;
     }
     private void HardDetonate()
     {

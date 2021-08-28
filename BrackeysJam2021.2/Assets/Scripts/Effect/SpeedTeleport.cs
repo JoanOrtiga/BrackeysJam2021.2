@@ -14,8 +14,22 @@ public class SpeedTeleport : PotionEffect
     private bool apply;
     private bool runOnce = false;
 
+    private int once = 0;
+    public ParticleSystem Particles;
+
+    private void StartOnceEffect()
+    {
+        if (once < 1)
+        {
+            Particles.gameObject.SetActive(true);
+            Particles.Play();
+            once++;
+        }
+            
+    }
     public override void ActivePotionEffect()
     {
+        StartOnceEffect();
         apply = true;
     }
     private void Awake()
@@ -30,7 +44,6 @@ public class SpeedTeleport : PotionEffect
         {
             if (Mathf.RoundToInt(EffectManager.timer) % 10 == 0 && !runOnce)
             {
-                
                 runOnce = true;
                 TeleportSpawners();
             }
@@ -62,6 +75,8 @@ public class SpeedTeleport : PotionEffect
     public override void StopPotionEffect()
     {
         apply = false;
+        once = 0;
+        Particles.gameObject.SetActive(false);
     }
 
 }

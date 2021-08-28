@@ -48,7 +48,8 @@ namespace ChaosAlchemy
             if (!(potion is null))
             {
                 GameObject spawnerPotion = Instantiate(potion, potionSpawnPoint.position, Quaternion.identity);
-                spawnerPotion.GetComponent<PotionEffect>()?.ActivePotionEffect();
+                
+                spawnerPotion.GetComponent<Potion>()?.SetPotionEffect();
             }
             else
             {

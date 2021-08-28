@@ -11,12 +11,16 @@ public class Explosion : PotionEffect
 
     public GameObject Caldero;
     private Vector3 explosionPos;
+
+    public ParticleSystem Particles;
     public override void StopPotionEffect()
     {
-        
+        Particles.gameObject.SetActive(false);
     }
     public override void ActivePotionEffect()
     {
+        Particles.gameObject.SetActive(true);
+        Particles.Play();
         Detonate();
     }
     private void Detonate()

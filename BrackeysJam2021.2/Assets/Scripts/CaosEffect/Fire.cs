@@ -10,10 +10,7 @@ public class Fire : PotionEffect
     //[SerializeField]
     public GameObject WaterColliderGameObject;
 
-    private void Start()
-    {
-        
-    }
+    public ParticleSystem Particles;
     private void OnEnable()
     {
         WaterCollider.delegateWaterCollider += FireOff;
@@ -38,6 +35,7 @@ public class Fire : PotionEffect
 
     public override void ActivePotionEffect()
     {
+        Particles.Play();
         IsOnFire();
     }
     public override void StopPotionEffect()
