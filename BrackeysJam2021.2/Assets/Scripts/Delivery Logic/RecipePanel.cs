@@ -16,7 +16,6 @@ public class RecipePanel : MonoBehaviour
     private TextMeshPro ingredients;
     [SerializeReference]
     private Image time;
-
     private void OnEnable()
     {
         OrdersManager.orderStartDelegate += OrderStart;
