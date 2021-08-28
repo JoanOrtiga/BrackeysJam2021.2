@@ -36,7 +36,7 @@ public class DeliverPoint : MonoBehaviour
     IEnumerator TimeUntilDissapear(GameObject potion)
     {
         yield return new WaitForSeconds(timeUntilDissapear);
-        _gameController.EndPotion();
+        _gameController.EndRecipe();
         Destroy(potion);
     }
 }
