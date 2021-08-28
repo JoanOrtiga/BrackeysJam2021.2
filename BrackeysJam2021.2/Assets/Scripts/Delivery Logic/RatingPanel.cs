@@ -45,17 +45,6 @@ public class RatingPanel : MonoBehaviour
         OrdersManager.showExplanationDelegate -= ShowExplanation;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            if(shown is false)
-                ShowPanel();
-            else
-                HidePanel();
-        }
-    }
-
     public void ShowPanel()
     {
         _canvasGroup.interactable = true;
@@ -80,6 +69,7 @@ public class RatingPanel : MonoBehaviour
         var explanation = ExplanationGeneration(mistakes);
         var temp = Instantiate(customerRating, verticalLayer);
         temp.GetComponent<CustomerRating>().Generate(explanation, stars, customer);
+        ShowPanel();
     }
     private string ExplanationGeneration(List<bool> mistakes)
     {
