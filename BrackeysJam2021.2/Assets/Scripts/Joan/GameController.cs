@@ -52,7 +52,7 @@ namespace ChaosAlchemy
             if (_currentRecipeTime <= 0)
             {
                 UpdateScore(0.0f);
-                EndPotion();
+                EndRecipe();
             }
 
             if (!starQuarterTime && _currentRecipeTime <= _currentRecipeTime / 4)
@@ -62,6 +62,7 @@ namespace ChaosAlchemy
             }
         }
 
+        //Add ingredients to the recipe (in cauldron)
         public void UpdateCurrentRecipe(IngredientType ingredient)
         {
             for (int i = 0; i < _currentRecipe.ingredients.Count; i++)
@@ -86,7 +87,7 @@ namespace ChaosAlchemy
             //ShowScore on sigui
         }
         
-        public void EndPotion()
+        public void EndRecipe()
         {
             _allScores.Add(_currentScore);
             _playerHUD.StarsAverage(_allScores);
@@ -118,6 +119,7 @@ namespace ChaosAlchemy
             starQuarterTime = false;
         }
         
+        //GetPotionType from cauldron.
         public GameObject PotionDone()
         {
             if (_currentRecipe.ingredients.Count > 0)
