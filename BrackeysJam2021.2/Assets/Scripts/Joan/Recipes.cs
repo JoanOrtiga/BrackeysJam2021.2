@@ -56,5 +56,7 @@ namespace ChaosAlchemy
         WhiteMushroom,
         WhiteMushroomCut,
         WhiteMushroomChopped,
+        WhiteMushroomCooked,
+        RedMushroomCooked,
     }
 }

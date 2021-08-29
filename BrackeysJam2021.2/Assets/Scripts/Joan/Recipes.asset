@@ -16,13 +16,13 @@ MonoBehaviour:
   - name: Poison
     potion: {fileID: 5059830085099923009, guid: 80f895bc52b871c47bf52c1731b8e7d5, type: 3}
     recipeTime: 90
-    ingredients: 0100000003000000
+    ingredients: 010000000600000007000000
   - name: Strength
     potion: {fileID: 5059830085099923009, guid: 5b2d5a20aca9fcc44aa556adc1acf36a, type: 3}
     recipeTime: 90
-    ingredients: 0000000003000000
+    ingredients: 000000000300000007000000
   - name: RoseFragrance
     potion: {fileID: 5059830085099923009, guid: 8cf7efdc7da0814418f64a44583f81e5, type: 3}
     recipeTime: 90
-    ingredients: 050000000300000001000000
+    ingredients: 05000000060000000100000004000000
   badPotion: {fileID: 5190515578955299048, guid: 4bc29024c68f7db4fb1c7ffdee7b6466, type: 3}
