@@ -43,7 +43,7 @@ public class EffectManager : MonoBehaviour
 
     private void StartClock()
     {
-        print(timer);
+        
         timer += Time.deltaTime;
         if (timer >= maxTimer)
         {
@@ -52,7 +52,6 @@ public class EffectManager : MonoBehaviour
             currentPotionEffect.StopPotionEffect();
 
         }
-        //print(timer);
     }
     private void Update()
     {

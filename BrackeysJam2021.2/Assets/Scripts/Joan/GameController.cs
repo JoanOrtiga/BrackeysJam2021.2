@@ -47,9 +47,9 @@ namespace ChaosAlchemy
             _recipePanel = FindObjectOfType<ChaosAlchemy.RecipePanel>();
             _playerHUD = FindObjectOfType<PlayerHUD>();
 
-            counter = 0;
-            GetNewRecipeByIndex(counter);
-            counter++;
+            //counter = 0;
+            GetNewRecipe();
+            //counter++;
             _currentRecipeTime = maxRecipeTime;
         }
 
@@ -111,15 +111,16 @@ namespace ChaosAlchemy
             _ratingPanel.ShowExplanation(mistakes, _currentScore, _currentCustomerName);
             GetNewRecipe();
             ResetMistakes();
-            if (counter < 3)
-            {
-                GetNewRecipeByIndex(counter);
-                counter++;
-            }
+            //if (counter < 3)
+            //{
+            //    GetNewRecipeByIndex(counter);
+            //    counter++;
+            //}
         }
 
         public void GetNewRecipeByIndex(int id)
         {
+            
             _currentRecipe = recipes.GetRecipeByIndex(id);
             _currentScore = maxScore;
             _currentRecipeTime = maxRecipeTime;
