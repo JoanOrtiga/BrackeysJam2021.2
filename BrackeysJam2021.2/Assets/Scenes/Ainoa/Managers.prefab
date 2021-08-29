@@ -88,14 +88,9 @@ GameObject:
   - component: {fileID: 1028782598954740939}
   - component: {fileID: 1028782598954740940}
   - component: {fileID: 1028782598954740917}
-  - component: {fileID: 1028782598954740916}
-  - component: {fileID: 1028782598954740915}
   - component: {fileID: 1028782598954740914}
-  - component: {fileID: 1028782598954740913}
   - component: {fileID: 1028782598954740912}
   - component: {fileID: 1028782598954740943}
-  - component: {fileID: 1028782598954740942}
-  - component: {fileID: 1028782598954740941}
   m_Layer: 0
   m_Name: EffectManager
   m_TagString: Untagged
@@ -142,36 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Particles: {fileID: 0}
---- !u!114 &1028782598954740916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028782598954740938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10dbfbdca265c14cadc76d95a7a2de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnerItems: []
-  initialPos: []
-  Particles: {fileID: 0}
---- !u!114 &1028782598954740915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028782598954740938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cff1651b145b014ab44d80816e13b59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnerItems: []
-  initialPos: []
-  Particles: {fileID: 0}
 --- !u!114 &1028782598954740914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,20 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rad: 7
   Caldero: {fileID: 0}
-  Particles: {fileID: 0}
---- !u!114 &1028782598954740913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028782598954740938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e95649bfb1306f74186ed232eb5ec473, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rad: 3
   Particles: {fileID: 0}
 --- !u!114 &1028782598954740912
 MonoBehaviour:
@@ -227,34 +178,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StrongValueEffect: 15
-  Particles: {fileID: 0}
---- !u!114 &1028782598954740942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028782598954740938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b06bdb5c422eb1b4eadbbd1a1ff3ec02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distorsion: {fileID: 0}
-  Particles: {fileID: 0}
---- !u!114 &1028782598954740941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028782598954740938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6adf52f1715fd247b2a955ea61e3a5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WaterColliderGameObject: {fileID: 0}
   Particles: {fileID: 0}
 --- !u!1 &1028782599541581981
 GameObject:

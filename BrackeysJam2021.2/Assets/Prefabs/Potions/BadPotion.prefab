@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5059830084142960948, guid: 104facd185012034796d4efee2feed07, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5059830085099923008, guid: 104facd185012034796d4efee2feed07, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -55,6 +59,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BadPotion
       objectReference: {fileID: 0}
+    - target: {fileID: 5059830085099923009, guid: 104facd185012034796d4efee2feed07, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059830085099923009, guid: 104facd185012034796d4efee2feed07, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5059830085099923022, guid: 104facd185012034796d4efee2feed07, type: 3}
       propertyPath: m_Interpolate
       value: 1
@@ -71,5 +83,11 @@ PrefabInstance:
       propertyPath: nameEffect
       value: Explosion
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5059830085099923021, guid: 104facd185012034796d4efee2feed07, type: 3}
+    - {fileID: 5059830085099923022, guid: 104facd185012034796d4efee2feed07, type: 3}
+    - {fileID: 5059830085099923019, guid: 104facd185012034796d4efee2feed07, type: 3}
+    - {fileID: 5059830085099923020, guid: 104facd185012034796d4efee2feed07, type: 3}
+    - {fileID: 5059830084142960945, guid: 104facd185012034796d4efee2feed07, type: 3}
+    - {fileID: 5059830084142960946, guid: 104facd185012034796d4efee2feed07, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 104facd185012034796d4efee2feed07, type: 3}
