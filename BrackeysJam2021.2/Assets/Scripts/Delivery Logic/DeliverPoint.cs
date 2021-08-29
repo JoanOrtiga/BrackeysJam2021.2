@@ -22,7 +22,7 @@ public class DeliverPoint : MonoBehaviour
     {
         if (other.GetComponent<Potion>() != null)
         {
-            musicManager.StartBattle();
+            //musicManager.StartBattle();
             StartCoroutine(TimeUntilDissapear(other.gameObject));
         }
 
