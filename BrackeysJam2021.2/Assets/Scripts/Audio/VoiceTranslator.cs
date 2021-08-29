@@ -12,6 +12,16 @@ public class VoiceTranslator : MonoBehaviour
     public string[] allSounds;
     public AudioSource audioSource;
 
+    private void OnEnable()
+    {
+        CustomerDialogues.delegateCustomerMessages += Translator;
+    }
+
+    private void OnDisable()
+    {
+        CustomerDialogues.delegateCustomerMessages -= Translator;
+    }
+
     private int FindexIndex(string s)
     {
         for (int i = 0; i < allSounds.Length; i++)

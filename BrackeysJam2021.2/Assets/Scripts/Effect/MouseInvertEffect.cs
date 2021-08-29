@@ -8,9 +8,12 @@ public class MouseInvertEffect : PotionEffect
 
     public delegate void MouseInvertDelegate(bool valueInvert);
     public static MouseInvertDelegate DelegateMouseInvert;
+    public ParticleSystem Particles;
     public override void ActivePotionEffect()
     {
+        Particles.gameObject.SetActive(true);
         apply = true;
+        Particles.Play();
         DelegateMouseInvert?.Invoke(apply);
     }
 
@@ -22,6 +25,7 @@ public class MouseInvertEffect : PotionEffect
 
     public override void StopPotionEffect()
     {
+        Particles.gameObject.SetActive(false);
         apply = false;
     }
 }

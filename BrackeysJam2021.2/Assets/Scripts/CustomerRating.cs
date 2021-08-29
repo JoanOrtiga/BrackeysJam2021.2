@@ -18,7 +18,6 @@ public class CustomerRating : MonoBehaviour
         explanationText.text = explanation;
         customerText.text = customer;
         ShowStars(stars);
-        Debug.Log("explanation");
     }
 
     public void ShowStars (float puntuation)
@@ -31,7 +30,7 @@ public class CustomerRating : MonoBehaviour
                 puntuation -= 0.5f;
             }
             else
-                return;
+                star.enabled = false;
         }
     }
 }

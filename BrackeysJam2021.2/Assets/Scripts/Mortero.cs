@@ -1,7 +1,7 @@
+using ChaosAlchemy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ChaosAlchemy;
 
 public class Mortero : MonoBehaviour, IInteractable
 {
@@ -28,8 +28,6 @@ public class Mortero : MonoBehaviour, IInteractable
     public void Interact()
     {
         picando = true;
-        movementUp = false;
-        movementDown = true;
         CameraController.CameraFix(true);
     }
 
@@ -43,13 +41,15 @@ public class Mortero : MonoBehaviour, IInteractable
         if ((other.GetComponent("Ingredient") as Ingredient) != null)
         {
             ingredient = other.GetComponent("Ingredient") as Ingredient;
+            timesCounter = 0;
         }
     }
     private void Update()
     {
+        Debug.Log(timesCounter);
         if (picando)
         {
-            if (timesCounter >= clickTimes)
+            if (timesCounter >= clickTimes && movementDown)
             {
                 if (!(ingredient is null))
                     converter.CovertIngredient(ingredient);
@@ -58,12 +58,11 @@ public class Mortero : MonoBehaviour, IInteractable
                 timesCounter = 0;
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0) && movementDown)
+            if (Input.GetKeyDown(KeyCode.E) && movementDown)
             {
                 timesCounter++;
                 movementUp = true;
                 movementDown = false;
-                Debug.Log("Click");
             }
             else if (movementUp)
             {
@@ -87,6 +86,14 @@ public class Mortero : MonoBehaviour, IInteractable
                     timer = 0;
                 }
             }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if ((other.GetComponent("Ingredient") as Ingredient) != null)
+        {
+            ingredient = null;
+            timesCounter = 0;
         }
     }
 }

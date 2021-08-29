@@ -10,6 +10,8 @@ public class CustomerDialogues : MonoBehaviour
 
     public CanvasGroup canvas;
 
+    public delegate void CustomerMessages(string textCustomer);
+    public static CustomerMessages delegateCustomerMessages;
     private void Start()
     {
         canvas = GetComponent<CanvasGroup>();
@@ -34,8 +36,11 @@ public class CustomerDialogues : MonoBehaviour
         canvas.interactable = true;
         canvas.blocksRaycasts = true;
 
+        
         customerDialogue.text = c.Dialogue;
         customerName.text = c.Name;
+
+        delegateCustomerMessages?.Invoke(customerDialogue.text);
     }
 
     private void EnterDialogue()

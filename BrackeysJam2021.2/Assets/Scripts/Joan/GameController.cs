@@ -14,7 +14,6 @@ namespace ChaosAlchemy
         public Recipes recipes;
         public CustomerNames customerNames;
 
-
         [Header("Puntuation")] 
         public float maxScore = 5f;
         private float _currentScore;
@@ -33,14 +32,24 @@ namespace ChaosAlchemy
 
 
         private bool starQuarterTime = false;
-        
+
+        private bool incorrectIngredients;
+        private bool slow;
+        private bool noTime;
+        private bool perfect;
+        private List<bool> mistakes => new List<bool> { incorrectIngredients, slow, noTime, perfect };
+
+        private int counter;
+
         private void Awake()
         {
             _ratingPanel = FindObjectOfType<RatingPanel>();
             _recipePanel = FindObjectOfType<ChaosAlchemy.RecipePanel>();
             _playerHUD = FindObjectOfType<PlayerHUD>();
-            
+
+            //counter = 0;
             GetNewRecipe();
+            //counter++;
             _currentRecipeTime = maxRecipeTime;
         }
 
@@ -52,12 +61,15 @@ namespace ChaosAlchemy
             if (_currentRecipeTime <= 0)
             {
                 UpdateScore(0.0f);
+                slow = false;
+                noTime = true;
                 EndRecipe();
             }
 
-            if (!starQuarterTime && _currentRecipeTime <= _currentRecipeTime / 4)
+            if (!starQuarterTime && _currentRecipeTime <= maxRecipeTime / 4)
             {
                 starQuarterTime = true;
+                slow = true;
                 UpdateScore(_currentScore - 1.0f);
             }
         }
@@ -78,6 +90,7 @@ namespace ChaosAlchemy
             if (_recipeErrors >= _currentRecipe.ingredients.Count/2)
             {
                 UpdateScore(_currentScore - 1.0f);
+                incorrectIngredients = true;
             }
         }
         
@@ -89,14 +102,25 @@ namespace ChaosAlchemy
         
         public void EndRecipe()
         {
+            if (_currentScore == maxScore)
+            {
+                perfect = true;
+            }
             _allScores.Add(_currentScore);
             _playerHUD.StarsAverage(_allScores);
-            _ratingPanel.ShowExplanation(new List<bool>(), _currentScore, _currentCustomerName);
+            _ratingPanel.ShowExplanation(mistakes, _currentScore, _currentCustomerName);
             GetNewRecipe();
+            ResetMistakes();
+            //if (counter < 3)
+            //{
+            //    GetNewRecipeByIndex(counter);
+            //    counter++;
+            //}
         }
 
         public void GetNewRecipeByIndex(int id)
         {
+            
             _currentRecipe = recipes.GetRecipeByIndex(id);
             _currentScore = maxScore;
             _currentRecipeTime = maxRecipeTime;
@@ -142,6 +166,13 @@ namespace ChaosAlchemy
                 }
             }
             */
+        }
+        private void ResetMistakes()
+        {
+            incorrectIngredients = false;
+            slow = false;
+            noTime = false;
+            perfect = false;
         }
     }
 }

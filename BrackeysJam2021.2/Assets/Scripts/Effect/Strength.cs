@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StrongEffect : PotionEffect
+public class Strength : PotionEffect
 {
     [SerializeField]
     private float StrongValueEffect = 15f;
@@ -12,9 +12,14 @@ public class StrongEffect : PotionEffect
     public delegate void StrongDelegate(float newValue);
     public static StrongDelegate delegateStrong;
 
+    public ParticleSystem Particles;
+
+
     public override void ActivePotionEffect()
     {
         apply = true;
+        Particles.gameObject.SetActive(true);
+        Particles.Play();
         ApplyStrongEffect();
     }
 
@@ -30,6 +35,7 @@ public class StrongEffect : PotionEffect
 
     public override void StopPotionEffect()
     {
+        Particles.gameObject.SetActive(false);
         apply = false;
     }
 }

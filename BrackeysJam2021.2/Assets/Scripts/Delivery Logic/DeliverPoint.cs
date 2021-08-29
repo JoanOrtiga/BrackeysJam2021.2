@@ -7,7 +7,7 @@ using UnityEngine;
 public class DeliverPoint : MonoBehaviour
 {
     [SerializeField] private float timeUntilDissapear;
-    
+    private MusicManager musicManager;
     //[SerializeField] private OrdersManager ordersManager;
 
     private GameController _gameController;
@@ -15,12 +15,14 @@ public class DeliverPoint : MonoBehaviour
     private void Awake()
     {
         _gameController = FindObjectOfType<GameController>();
+        musicManager = FindObjectOfType<MusicManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Potion>() != null)
         {
+            //musicManager.StartBattle();
             StartCoroutine(TimeUntilDissapear(other.gameObject));
         }
 
