@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6321964425073078837
+--- !u!1 &1047006083861922208
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4145787764370888528}
-  - component: {fileID: 5206817382242933665}
-  - component: {fileID: 6827821126073052968}
-  - component: {fileID: 7946295677872777755}
-  - component: {fileID: 1545181917818651345}
-  - component: {fileID: 2675530701412173490}
-  - component: {fileID: 5336059303509297328}
+  - component: {fileID: 6968013498967958725}
+  - component: {fileID: 1259252560440272948}
+  - component: {fileID: 575014318385241277}
+  - component: {fileID: 3998491179685796238}
+  - component: {fileID: 5497208073972904260}
+  - component: {fileID: 8942727900196730151}
+  - component: {fileID: 1384552253644831525}
   m_Layer: 0
-  m_Name: Set1
+  m_Name: Seta blanca cocinada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4145787764370888528
+--- !u!4 &6968013498967958725
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6321964425073078837}
+  m_GameObject: {fileID: 1047006083861922208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.33, y: -0.934, z: -6.298}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5206817382242933665
+--- !u!33 &1259252560440272948
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6321964425073078837}
+  m_GameObject: {fileID: 1047006083861922208}
   m_Mesh: {fileID: 4057577946846465200, guid: 47b611bff6c5406499fd91e06631106a, type: 3}
---- !u!23 &6827821126073052968
+--- !u!23 &575014318385241277
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6321964425073078837}
+  m_GameObject: {fileID: 1047006083861922208}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +64,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bebdd028c253d374abba2aa2d3c08531, type: 2}
+  - {fileID: 2100000, guid: 8924ee7d2426bb649b734c477cd2a5ad, type: 2}
+  - {fileID: 2100000, guid: 1ebe938f989422b4f840f0726c913683, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,13 +87,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &7946295677872777755
+--- !u!54 &3998491179685796238
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6321964425073078837}
+  m_GameObject: {fileID: 1047006083861922208}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -102,13 +103,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &1545181917818651345
+--- !u!136 &5497208073972904260
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6321964425073078837}
+  m_GameObject: {fileID: 1047006083861922208}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -116,26 +117,26 @@ CapsuleCollider:
   m_Height: 0.50409985
   m_Direction: 1
   m_Center: {x: 5.764, y: 2.01525, z: -0.94395}
---- !u!114 &2675530701412173490
+--- !u!114 &8942727900196730151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6321964425073078837}
+  m_GameObject: {fileID: 1047006083861922208}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de51445afa407984bb8bb18c05752b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Lepiota brunneoincarnata
---- !u!114 &5336059303509297328
+  _ingredientType: 0
+--- !u!114 &1384552253644831525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6321964425073078837}
+  m_GameObject: {fileID: 1047006083861922208}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f09fb5cc3d879ce49860145e8766afee, type: 3}

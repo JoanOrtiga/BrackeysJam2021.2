@@ -1,8 +1,9 @@
+using ChaosAlchemy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mortero : Interactable
+public class Mortero : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private int clickTimes = 3;
@@ -24,12 +25,10 @@ public class Mortero : Interactable
     private Ingredient ingredient;
     private int timesCounter;
     private bool picando;
-    public override void Active()
+    public void Interact()
     {
         picando = true;
-        movementUp = false;
-        movementDown = true;
-        CameraController.CameraFix(false);
+        CameraController.CameraFix(true);
     }
 
     private void Start()
@@ -42,27 +41,28 @@ public class Mortero : Interactable
         if ((other.GetComponent("Ingredient") as Ingredient) != null)
         {
             ingredient = other.GetComponent("Ingredient") as Ingredient;
+            timesCounter = 0;
         }
     }
     private void Update()
     {
+        Debug.Log(timesCounter);
         if (picando)
         {
-            if (timesCounter >= clickTimes)
+            if (timesCounter >= clickTimes && movementDown)
             {
                 if (!(ingredient is null))
                     converter.CovertIngredient(ingredient);
-                CameraController.CameraFix(true);
+                CameraController.CameraFix(false);
                 picando = false;
                 timesCounter = 0;
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0) && movementDown)
+            if (Input.GetKeyDown(KeyCode.E) && movementDown)
             {
                 timesCounter++;
                 movementUp = true;
                 movementDown = false;
-                Debug.Log("Click");
             }
             else if (movementUp)
             {
@@ -86,6 +86,14 @@ public class Mortero : Interactable
                     timer = 0;
                 }
             }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if ((other.GetComponent("Ingredient") as Ingredient) != null)
+        {
+            ingredient = null;
+            timesCounter = 0;
         }
     }
 }
