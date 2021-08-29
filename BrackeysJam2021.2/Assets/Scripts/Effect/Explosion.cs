@@ -17,6 +17,11 @@ public class Explosion : PotionEffect
     {
         Particles.gameObject.SetActive(false);
     }
+
+    private void Start()
+    {
+        Particles.gameObject.SetActive(false);
+    }
     public override void ActivePotionEffect()
     {
         Particles.gameObject.SetActive(true);
@@ -24,7 +29,7 @@ public class Explosion : PotionEffect
         Detonate();
     }
     private void Detonate()
-    {   
+    {
         explosionPos = Caldero.transform.position;
         Collider[] coll = Physics.OverlapSphere(explosionPos, rad);
 
