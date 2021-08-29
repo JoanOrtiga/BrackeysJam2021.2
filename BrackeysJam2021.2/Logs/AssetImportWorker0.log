@@ -438,3 +438,4 @@ Received Import Request.
   path: Assets/Prefabs/Deliver Point.prefab
   artifactKey: Guid(fa12dfe58d432bc4083660a4d1b7b13c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Prefabs/Deliver Point.prefab using Guid(fa12dfe58d432bc4083660a4d1b7b13c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '387740d42895c9b3a2743ba4b3920b1a') in 0.043791 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
