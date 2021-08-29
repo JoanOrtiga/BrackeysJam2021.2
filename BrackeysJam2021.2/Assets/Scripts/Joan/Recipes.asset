@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipes:
   - name: Poison
-    potion: {fileID: 5059830085099923009, guid: 80f895bc52b871c47bf52c1731b8e7d5, type: 3}
+    potion: {fileID: 338521759096621183, guid: 02e2378ec66bf7e46b724f377b7ebfa7, type: 3}
     recipeTime: 90
     ingredients: 010000000600000007000000
   - name: Strength
-    potion: {fileID: 5059830085099923009, guid: 5b2d5a20aca9fcc44aa556adc1acf36a, type: 3}
+    potion: {fileID: 7949020526371304820, guid: 8202bf7e82c3301429476be2ee5fbb5d, type: 3}
     recipeTime: 90
-    ingredients: 000000000300000007000000
+    ingredients: 
   - name: RoseFragrance
-    potion: {fileID: 5059830085099923009, guid: 8cf7efdc7da0814418f64a44583f81e5, type: 3}
+    potion: {fileID: 386489279860533013, guid: 0d1c86761914196479d5d4d4c0f42238, type: 3}
     recipeTime: 90
-    ingredients: 05000000060000000100000004000000
+    ingredients: 0500000004000000
   badPotion: {fileID: 5190515578955299048, guid: 4bc29024c68f7db4fb1c7ffdee7b6466, type: 3}
