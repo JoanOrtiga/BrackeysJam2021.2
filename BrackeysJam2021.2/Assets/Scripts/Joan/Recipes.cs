@@ -35,15 +35,26 @@ namespace ChaosAlchemy
 
     public enum IngredientType
     {
-        Kerosene = 0,
-        BatTears, 
-        Wine, 
-        Water, 
-        Alstroemeria, 
-        PsilocybeCubensis, 
-        PotassiumNitrate, 
-        LizardEye, 
-        UnicornHorn, 
-        LepiotaBrunneoincarnata
+        //Alstroemeria=0,
+        //AlstroemeriaChopped,
+        //BatTears,
+        //FrogPaw,
+        //FrogPawChopped,
+        //Kerosene,
+        //LepiotaBrunneoincarnataCut,
+        //LizardEyeCut,
+        //PotassiumNitrate,
+        //PotassiumNitrateMelt,
+        //PsilocybeCubensisMelt,
+        //PsylosipeChopped,
+        //UnicornHornCut,
+        //Water,
+        //Wine, 
+        RedMushroom=0,
+        RedMushroomCut,
+        RedMushroomChopped,
+        WhiteMushroom,
+        WhiteMushroomCut,
+        WhiteMushroomChopped,
     }
 }
