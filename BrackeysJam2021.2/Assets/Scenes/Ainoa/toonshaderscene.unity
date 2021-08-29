@@ -790,9 +790,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c657a1a044b71634b8a506ba90795f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredients: 00000000
+  ingredients: 0000000003000000
   convertedIngredients:
-  - {fileID: 1411373394735165926, guid: 29b963d455827b14b8cb1f7ac4ec3441, type: 3}
+  - {fileID: 170775745447787697, guid: ff146ab3a28a08541b5c071a8985be86, type: 3}
+  - {fileID: 170775745447787697, guid: 53131a026bd947342a12d1e1cd32c349, type: 3}
 --- !u!4 &300477155
 Transform:
   m_ObjectHideFlags: 0
@@ -1744,7 +1745,6 @@ GameObject:
   - component: {fileID: 617386217}
   - component: {fileID: 617386216}
   - component: {fileID: 617386220}
-  - component: {fileID: 617386215}
   - component: {fileID: 617386219}
   m_Layer: 0
   m_Name: Heater
@@ -1753,20 +1753,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &617386215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617386214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6adf52f1715fd247b2a955ea61e3a5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WaterColliderGameObject: {fileID: 0}
-  Particles: {fileID: 0}
 --- !u!23 &617386216
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1861,8 +1847,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredients: 0000000003000000
   convertedIngredients:
-  - {fileID: 8610321310290114495, guid: 5c148105ea67ed74593b180541745baa, type: 3}
-  - {fileID: 1047006083861922208, guid: 3668a7e75afb35a4888883fc0fcc25b1, type: 3}
+  - {fileID: 170775745447787697, guid: 6c3b2420cdccee24998f77bc625e0cbb, type: 3}
+  - {fileID: 170775745447787697, guid: 6b8ada6444eefc740b789d5789cba18c, type: 3}
 --- !u!1 &621134580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,6 +2686,10 @@ PrefabInstance:
     - target: {fileID: 1794873906585526547, guid: 2f0e4d35c04c16e47bd965ed09cc8ee1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 54.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045971492027562849, guid: 2f0e4d35c04c16e47bd965ed09cc8ee1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 3045971492775174505, guid: 2f0e4d35c04c16e47bd965ed09cc8ee1, type: 3}
       propertyPath: m_Pivot.x
@@ -6118,6 +6108,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mortero (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2714024043490720533, guid: 770de2d4d6f166a44be1e99ffb1cca87, type: 3}
+      propertyPath: convertedIngredients.Array.data[0]
+      value: 
+      objectReference: {fileID: 170775745447787697, guid: 2df546787e5e79e469926691f0421544, type: 3}
+    - target: {fileID: 2714024043490720533, guid: 770de2d4d6f166a44be1e99ffb1cca87, type: 3}
+      propertyPath: convertedIngredients.Array.data[1]
+      value: 
+      objectReference: {fileID: 170775745447787697, guid: 6c1231217a40d3041b02f1cf0718d2a2, type: 3}
     - target: {fileID: 2714024043490720536, guid: 770de2d4d6f166a44be1e99ffb1cca87, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 797672498573594120}
   - component: {fileID: 5886598969000521190}
   m_Layer: 7
-  m_Name: WhiteMushRomPrefab 1
+  m_Name: WhiteMushRomCookedPrefab
   m_TagString: Interesting
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de51445afa407984bb8bb18c05752b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ingredientType: 3
+  _ingredientType: 6
 --- !u!114 &797672498573594120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bebdd028c253d374abba2aa2d3c08531, type: 2}
+  - {fileID: 2100000, guid: 20e4c63e6b8418b4fbb63affd565a1d9, type: 2}
   - {fileID: 2100000, guid: 1ebe938f989422b4f840f0726c913683, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
