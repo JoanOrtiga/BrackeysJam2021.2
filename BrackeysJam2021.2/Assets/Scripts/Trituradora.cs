@@ -1,8 +1,9 @@
+using ChaosAlchemy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trituradora : Interactable
+public class Trituradora : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private float rad = 3f;
@@ -30,7 +31,7 @@ public class Trituradora : Interactable
             ingredientsInside = 0;
         }
     }
-    public override void Active()
+    public void Interact()
     {
         activated = true;
     }
